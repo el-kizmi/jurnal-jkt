@@ -4,6 +4,10 @@
 
 Skill ini bekerja di **Claude (claude.ai)**, **ChatGPT**, **Google Gemini**, **Claude Code**, **Codex**, dan **Gemini CLI** — satu paket ZIP yang sama bisa diunggah ke semua platform tersebut.
 
+![Ilustrasi skill JKT Writing System](skill/images/jkt.png)
+
+*Ilustrasi skill JKT Writing System — visualisasi cara kerja menulis, mengaudit, dan menganalisis pola naskah Jurnal Kelautan Tropis dengan bantuan AI.*
+
 ---
 
 ## Daftar Isi
@@ -394,6 +398,7 @@ jurnal-jkt/
 │  ├─ PANDUAN_PENGGUNAAN.md         ← panduan lengkap (Bahasa Indonesia)
 │  ├─ build_and_install.py          ← validasi + ZIP + instalasi lokal
 │  ├─ dist/jkt-writing-system.zip   ← ★ file untuk diunggah ke Claude/ChatGPT/Gemini
+│  ├─ images/jkt.png                ← ilustrasi skill (dipakai di README ini)
 │  └─ jkt-writing-system/           ← sumber skill (edit di sini)
 ├─ jkt_pattern_detection/           ← hasil analisis pola korpus (artikel_profiles.yaml, report.html)
 ├─ pattern/                         ← codebook & aturan pola sumber
