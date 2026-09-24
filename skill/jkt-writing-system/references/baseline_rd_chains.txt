@@ -1,0 +1,17 @@
+# token key: R result | F fig/table pointer | C internal comparison | L literature agreement/support/definition source | LX literature contrast
+# B benchmark/criterion classification | E explanation | M mechanism | I interpretation | U uncertainty/limitation | S statistical inference
+# G management implication | K knowledge implication | A application/recommendation/future research | T transition/synthesis | D definition/background | X method restatement
+2|D X X F;X E L;X L L;F R C M L;M L I;F R I L E L;X F R I R I R C M L;R C E L M C I L A;R C E M L I;D D X T;D X F;F R C E L M L I;R M C R E L;R C M E;R M A T;R F R I
+3|R L R I R R I L;I D L E L R I L;D L D L;R I F D L;D L R I L I;D L R I L E L;R I I I R I;R I L I I;X D L R I F;R I R I L C E L;R I L I R I L;D L D L;R B L I E D L;R B L C L D L;T R I I L;M L E L;K L I R I L I;T I L;G L A L K;I L G G L G G
+4|R F R R I I;I E L E L;R F I I L;E L L I L;S I B R I L E L;S I I R I;R I L C I L U L;S I I;E L I;F R;R B I E L E L R L T
+5|R F R R F;L I L LX E L;D L R F;R R I L I R C I L I;D L D L;D R B I C M LX C I L;D L R B R I M L I R I L;D L R B I L I R I L;R F R C I;M L M I L M;R D L E I L M L
+6|R F R B E;B E I;I G;R E L I;D L E;R F B L;R C E;R B I E L;R E R B L;R B L E E;R B E L I;R B I E;R I E B L I;E R B L;E R E R F;F R D E G;F R;F R;D L R E;R I;I L I G;G G I;X L R I K;R I L G
+7|R F X U;X F R;F R C I A E L E L;I L F;F R B R C;E L R F L L R L R I L;R X F;F R L L R I L E;E L I L R I L K E L I L;T R L I
+8|R L R L;R L R;R L R;R L R L;R L R L;R L R L;R L R;R L R;R L R;R L R L;E L R E;R R R E L;F R R I E I
+10|D R F;R F;F R R E R;LX E E L L;R B L E E L L R E;R B L L E L;R B L E LX L L;R L E M L L;F R E L L
+11|F R C R C E E;C E E L I;E L E L I E L L R R E L I
+12|I R I E L I L;X R E L E E E;E E E L;L L L L;R I E L I I L;I L L L;S S I;S I L I E L E L E L
+13|R R F R;F R B R E L D;D L R I L;F R I E E L I;R B I E E L E L;R F E L E;F R B I;E M L M;M L M F R;F R B I R I;M R L R E;E M L M L L U E;B R E;R B
+14|R F R I E L R;D L R I LX I L;R I E E E I;E L E E L E M L E L;D L R R R;R B I LX E;E R E M L R E M;S I E L L;S I M S I E L;I M M L I;T I G G G G;I U A A
+15|R F L R;F R I I T;F R B L I L L;R R I B L;L L L;T M L I;R I R;R M I T;X F R;F R B I M L M;R I L E M L;R B I LX LX LX I;E M L;U A L A A
+16|X L R I B;R I;R L R F I M L;R F M L I;R I L I;R I L I;R F I L;R M I I;I I L L I I;R F I L;R F I L;R I I L;S I B I B U I;X S I R;I M L M L;U L U;U L A;T I L;R M I I L;S I E L;U L I L A;T I A

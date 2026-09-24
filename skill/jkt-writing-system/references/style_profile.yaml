@@ -1,0 +1,258 @@
+# JKT_STYLE_PROFILE.yaml — POPULATED
+# Version: 1.1 (schema 1.0 from pattern/JKT_STYLE_PROFILE.yaml, filled by Artefak 1)
+# Source corpus: Jurnal Kelautan Tropis Vol. 29 No. 2 (June 2026), 14 eligible original research articles.
+# STATUS: PROVISIONAL. The corpus is a single issue, so no pattern is VALIDATED (see pattern_database.yaml header).
+# Percentages are % of articles unless stated. Full evidence per pattern: pattern_database.yaml.
+
+schema_version: "1.0"
+profile_version: "1.1"
+journal:
+  name: "Jurnal Kelautan Tropis"
+  profile_status: "PROVISIONAL_SINGLE_ISSUE"
+  corpus_period: "2026 (Vol. 29 No. 2)"
+  corpus_size: 14
+  language_groups: {JKT_EN: 7, JKT_ID: 7}
+  domains_represented: [MARECO, MARBIO, POLL, RS, GEO, FISH, COAST, MICRO, OCEAN, OTHER]
+  method_families: {field_ecological_index: 6, lab_chemical_or_molecular: 4, acoustic: 3, sedimentology: 1}
+  author_clusters: {C1_undip: 5, C2_ipb_acoustics: 2, independent_units: 9}
+  saturation_status: "NOT_REACHED"
+
+editorial_constraints:
+  source: "JKT author guidelines, ejournal2.undip.ac.id/index.php/jkt/about/submissions (retrieved 2026-09-23). Re-verify before submission."
+  rules:
+    - {id: JKT-GUIDE-001, rule: "Title <= 12 words; no abbreviations or formulas", empirical_compliance_percent: 36}
+    - {id: JKT-GUIDE-002, rule: "Abstract <= 250 words, one paragraph", empirical_compliance_percent: 86}
+    - {id: JKT-GUIDE-003, rule: "Keywords 3-5 (scientific names, regional names, topic, method)", empirical_compliance_percent: 93}
+    - {id: JKT-GUIDE-004, rule: "Max 10 pages incl. figures/tables; A4; single spacing; Century Gothic 12 pt; margins 2 cm sides, 3 cm top/bottom", empirical_compliance_percent: 57}
+    - {id: JKT-GUIDE-005, rule: "Introduction ~15-20% of article length; contains background, literature review, gap analysis, objectives", empirical_compliance_percent: 50}
+    - {id: JKT-GUIDE-006, rule: "Research article sections: Title, Authors, Abstract, Keywords, Introduction, Methods, Results and Discussion, Conclusion, References", empirical_compliance_percent: 100}
+    - {id: JKT-GUIDE-007, rule: "Review article sections: Title, Authors, Abstract, Keywords, Introduction, Contents, Closing, References"}
+    - {id: JKT-GUIDE-008, rule: "APA 7th edition author-year citation; 'et al.' for three or more authors; use Mendeley/EndNote", empirical_compliance_percent: 100}
+    - {id: JKT-GUIDE-009, rule: "Abstract in English and/or Indonesian; Indonesian articles carry an English title + abstract", empirical_compliance_percent: 100}
+
+title:
+  empirical_status: "OBSERVED"
+  dominant_archetypes: []          # none above 30%
+  archetype_counts: {T6: 4, T4: 3, T7: 3, T1: 2, T5: 1, T2: 1}
+  word_count: {mean: 14.3, median: 14.5, min: 11, max: 17, preferred_empirical_range: "11-17 (guideline cap 12 wins)"}
+  information_order_patterns:
+    - "[VARIABLE|PHENOMENON|METHOD] -> [OBJECT|TAXON|ECOSYSTEM] -> [LOCATION]"
+  location_usage_percent: 86
+  location_terminal_when_present_percent: 100
+  scientific_name_usage_percent: 21
+  method_in_title_percent: 36
+  result_claim_in_title_percent: 0
+  core_patterns: [JKT-TITLE-001, JKT-TITLE-002]
+  common_patterns: []
+  domain_patterns: []
+  anti_patterns: ["JKT-TITLE-003 (over 12 words — do not imitate)", "chemical symbols in title"]
+
+abstract:
+  empirical_status: "OBSERVED"
+  dominant_move_sequences: ["AB-BG -> AB-OBJ -> AB-MET -> AB-RES -> AB-CON/AB-IMP"]
+  alternative_move_sequences: ["AB-BG -> AB-GAP -> AB-OBJ -> AB-MET -> AB-RES -> AB-IMP", "AB-BG -> AB-OBJ -> AB-MET -> AB-RES (no closing move; 3/14)"]
+  word_count: {mean: 217, median: 220.5, range: "130-272", IQR: "200-248"}
+  sentence_count: {mean: 9.3, median: 9.5, range: "5-12"}
+  move_presence:
+    background_percent: 100
+    problem_percent: 36
+    gap_percent: 36
+    gap_or_problem_percent: 57
+    objective_percent: 100
+    method_percent: 100
+    result_percent: 100
+    conclusion_percent: 50
+    implication_percent: 71
+  objective_sentence_position: "S2-S4"
+  quantitative_results_percent: 100
+  statistical_results_percent: 29
+  citation_presence_percent: 0
+  core_patterns: [JKT-ABS-001, JKT-ABS-002, JKT-ABS-003, JKT-ABS-005, JKT-ABS-007]
+  common_patterns: [JKT-ABS-004]
+  anti_patterns: ["citation in abstract", "abstract numbers that differ from Results (JKT-ANTI-001)"]
+
+introduction:
+  empirical_status: "OBSERVED"
+  paragraph_count: {mean: 4.2, median: 4, range: "2-7"}
+  dominant_rhetorical_sequences:
+    - "I1 (importance/context) -> I2 (specific context) -> I4 (prior knowledge) -> I5 (gap) -> I7 (objective)"
+  paragraph_archetypes:
+    - "P_open: importance or context, 2-5 citations"
+    - "P_mid: specific context / prior findings / method background"
+    - "P_final: prior studies -> contrastive gap -> 'Therefore' -> objective (+ expected contribution)"
+  gap:
+    explicit_percent: 79
+    implicit_percent: 14
+    absent_percent: 7
+    dominant_gap_types: [G-GEO, G-CON, G-METH]
+    in_last_two_paragraphs_percent_of_explicit: 91
+    contrastive_marker_percent_of_explicit: 82
+  objective:
+    final_paragraph_percent: 100
+    dominant_position: "final paragraph; last sentence or followed only by expected contribution"
+    causal_connective_before_objective_percent: 71
+    expected_contribution_percent: 36
+  funnel_pattern:
+    prevalence_percent: 71
+    dominant_scope_sequence: [5, 3, 2, 1]
+  citation_density:
+    citations_per_sentence: {median: 0.72, IQR: "0.56-1.07"}
+    citations_per_paragraph: {median: 3.1}
+    paragraphs_with_citation_percent: 85
+  core_patterns: [JKT-INTRO-001]
+  common_patterns: [JKT-INTRO-002, JKT-INTRO-003, JKT-INTRO-004, JKT-INTRO-005]
+  domain_patterns: []
+  anti_patterns: ["gap stated before its subject is introduced (JKT-ANTI-009)", "unsupported 'no previous study' claim"]
+
+methods:
+  empirical_status: "OBSERVED"
+  dominant_component_sequences: ["M1+M2 -> M5 -> M6 -> M8/M9 -> M10 -> M11"]
+  subsection_patterns: ["location/time", "sampling", "measurement or lab analysis", "data analysis"]
+  reproducibility_profile:
+    location_detail: "stated 14/14; map figure >= 11/14"
+    study_period_detail: "explicit in Methods 7/14 confirmed"
+    sample_size_detail: "usually stated"
+    sampling_detail: "design named in ~9/14 (purposive most common)"
+    instrument_detail: "stated; model names common"
+    analytical_method_detail: "stated with source citation"
+    software_detail: "with version 6/14"
+  method_citation_density: {citations_per_sentence_median: 0.35, IQR: "0.29-0.48"}
+  equation_usage_percent: 64
+  software_reporting_percent: 43
+  core_patterns: [JKT-METH-001, JKT-METH-002]
+  common_patterns: []
+  domain_patterns: ["JKT-METH-003 (index equations + symbol legend; field-ecological-index studies)", "instrument calibration (acoustic)", "CLSI/SNI standard protocols (lab)"]
+  anti_patterns: ["future tense left from a proposal ('will be collected')"]
+
+results:
+  empirical_status: "OBSERVED"
+  dominant_reporting_patterns:
+    - "Combined Results and Discussion, one variable/analysis block at a time, in Methods order (93%)"
+    - "Paragraph opens with a result or a table/figure pointer (57% of paragraphs)"
+  numerical_reporting: {dominant: "values or ranges repeated in prose after table/figure pointer; P(result | pointer) = 0.73"}
+  statistical_reporting: {dominant: "descriptive or index classification; p-values in 2/14; regression/correlation coefficients in 4/14"}
+  table_figure_reference_patterns: ["'Table X shows …' / '(Table X)' before narrating values", "'Berdasarkan Tabel/Gambar X …'"]
+  core_patterns: [JKT-RES-001, JKT-RES-002]
+  common_patterns: [JKT-STAT-001]
+  domain_patterns: []
+  anti_patterns: ["list-like descriptive blocks without comparison (JKT-ANTI-006)", "mislabelled statistical magnitude (JKT-ANTI-007)"]
+
+discussion:
+  empirical_status: "OBSERVED"
+  dominant_discourse_sequences: ["R -> I -> L", "R -> E -> L", "R -> L(agreement) -> E(hedged) -> L(support)"]
+  alternative_discourse_sequences: ["D -> L -> R -> B -> I (definition-led)", "R -> I -> M -> L (mechanism)", "T -> I -> G/K -> U -> A (closing synthesis, mainly EN)"]
+  discussion_depth_distribution:   # % of paragraphs by deepest unit
+    level_0_percent: 0
+    level_1_percent: 7
+    level_2_percent: 12
+    level_3_percent: 54
+    level_4_percent: 17
+    level_5_percent: 10
+  result_first_percent: 57                 # % of paragraphs
+  literature_comparison_percent: 100       # % of articles with R … L
+  mechanism_percent: 43                    # % of articles with R … M
+  management_implication_percent: 50       # % of articles with G/K/A in R&D
+  contrasting_literature_percent: 29       # % of articles with LX
+  hedged_causal_language_percent: null     # not determined reliably; >= 50% of articles contain unhedged causal claims
+  citation_density:
+    citations_per_sentence: {median: 0.42, IQR: "0.29-0.48"}
+    citations_per_paragraph: {median: 1.73}
+  transitions_top: {"E->L": 0.71, "M->L": 0.68, "F->R": 0.73, "D->L": 0.79, "I->L": 0.47, "R->I": 0.33}
+  language_specific: {EN_level5_percent: 16, ID_level5_percent: 1, EN_closing_synthesis: "6/7", ID_closing_synthesis: "1/7"}
+  core_patterns: [JKT-DISC-001, JKT-DISC-002]
+  common_patterns: [JKT-DISC-003]
+  domain_patterns: ["regulatory benchmarks (e.g. KepMenLH 201/2004, PP 22/2021) — cite the exact regulation used for water quality and mangrove condition"]
+  anti_patterns: ["unhedged causal claim from observational data (JKT-ANTI-002)", "result repetition without interpretation"]
+
+conclusion:
+  empirical_status: "OBSERVED"
+  dominant_move_sequences: ["C2 -> C3 -> C4 -> C6/C7", "C1/C2 -> C3 -> C4 -> C5"]
+  paragraphs: 1
+  sentences: {median: 4.5, IQR: "4-9"}
+  words: {median: 136.5, IQR: "87-186"}
+  objective_alignment: {direct_percent: 86, partial_percent: 14, weak_percent: 0}
+  quantitative_result_inclusion_percent: 79
+  interpretation_percent: 71
+  implication_percent: 29            # C5/C6
+  recommendation_percent: 29         # C7
+  implication_or_recommendation_percent: 57
+  future_research_percent: 21
+  limitation_percent: 14
+  citation_percent: 0
+  new_information_percent: 0
+  core_patterns: [JKT-CONC-001, JKT-CONC-003]
+  common_patterns: [JKT-CONC-002]
+  domain_patterns: []
+  anti_patterns: ["result-only conclusion (JKT-ANTI-003)", "numbers contradicting Results (JKT-ANTI-001)"]
+
+citations:
+  empirical_status: "OBSERVED"
+  dominant_functions: {introduction: [CIT-BG, CIT-SUP, CIT-DAT], methods: [CIT-MET, CIT-TAX, CIT-BEN], results_discussion: [CIT-SUP, CIT-MEC, CIT-BEN, CIT-DEF]}
+  dominant_positions: [final, non_integral, cluster_in_introduction]
+  integral_vs_non_integral: {integral_percent: 15, non_integral_percent: 85, EN_integral_percent: 8, ID_integral_percent: 24}
+  cluster_usage_percent: null
+  section_density:           # citations per sentence, medians
+    introduction: 0.72
+    methods: 0.35
+    results_discussion: 0.42
+    conclusion: 0
+  core_patterns: [JKT-CIT-001]
+  common_patterns: [JKT-CIT-002]
+  anti_patterns: ["citation in abstract or conclusion", "contrasting literature almost never used (descriptive, not a target)"]
+
+references:
+  empirical_status: "OBSERVED"
+  count: {mean: 35.8, median: 37, range: "14-63", IQR: "24.75-47", EN_median: 40, ID_median: 26}
+  age_profile:               # medians across articles
+    age_0_5_percent: 43
+    age_0_10_percent: 79
+    age_11_20_percent: null
+    age_20_plus_percent: null
+  source_profile:
+    journal_articles_percent: null   # majority; not measured precisely
+    theses_percent: "rare (<= 2 per article)"
+    government_documents_percent: "regulations/standards in some pollution and water-quality papers"
+  doi_presence_percent: 69
+  international_source_percent: null
+  indonesian_source_percent: null
+  core_patterns: [JKT-REF-001, JKT-REF-002]
+  common_patterns: []
+  anti_patterns: []
+
+language:
+  empirical_status: "OBSERVED"
+  sentence_length: {mean_words_introduction: 28.0, mean_words_results_discussion: 24.8, EN_intro: 30.7, ID_intro: 25.4}
+  active_passive_profile: {active_percent: null, passive_percent: null}
+  voice: "impersonal; 'this study / penelitian ini' as agent; first person EN 3/7, ID 0/7"
+  hedge_profile: ["EN: may, likely, suggests, is thought to, indicates", "ID: diduga, dimungkinkan, mengindikasikan, cenderung"]
+  booster_profile: ["confirm/demonstrate (EN conclusions)", "'sangat signifikan' (avoid)"]
+  connective_profile:
+    gap: [However, Despite, Although, "In contrast", Namun, "Akan tetapi"]
+    objective: [Therefore, Consequently, "Oleh karena itu", maka]
+    agreement: ["consistent with", "in line with", "similar to", "sesuai dengan", "sama dengan", "sejalan dengan", "didukung oleh", "diperkuat oleh"]
+    synthesis: [Overall, Collectively, "Secara keseluruhan", "Dengan demikian"]
+  recurring_discourse_functions: [result, interpretation, literature_support, explanation]
+  language_specific:
+    JKT_ID: {formula: "R -> 'sama dengan/sesuai dengan' prior study -> 'Hal ini diduga karena' -> 'didukung/diperkuat oleh' -> 'X menambahkan'", status: "LANGUAGE + AUTHOR_CLUSTER"}
+    JKT_EN: {closing_synthesis_block: "6/7", conclusion_opener: "'This study demonstrated/confirmed …' 5/7"}
+
+cross_section_coherence:
+  empirical_status: "OBSERVED"
+  dominant_traceability_patterns: ["title variables = objective variables = R&D blocks = conclusion statements"]
+  objective_method_result_conclusion_alignment_percent: 86
+  terminology_consistency_patterns: []
+  anti_patterns: ["abstract/objective/conclusion numbers or facts that contradict the body: 4/14 (JKT-ANTI-001)"]
+
+validated_patterns: []                      # requires >= 2 more issues + holdout
+provisional_patterns: "see pattern_database.yaml -> patterns (all PROVISIONAL)"
+rejected_candidate_patterns:
+  - "Dominant title archetype (no archetype above 30%)"
+  - "Fixed abstract tense for the objective (aims vs aimed varies)"
+
+handoff:
+  writing_skill:
+    consume: [editorial_constraints, core_patterns, common_patterns, domain_patterns, anti_patterns]
+    note: "Because profile_status is PROVISIONAL, core_patterns are applied as SHOULD, not SHOULD_STRONGLY."
+  style_auditor:
+    consume: [editorial_constraints, provisional_patterns, empirical_ranges, anti_patterns]
+    note: "Report conformity deviations as MODERATE at most; scientific-integrity findings keep their own severity."

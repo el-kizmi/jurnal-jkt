@@ -1,0 +1,371 @@
+# JKT_GENERATION_RULES.yaml
+# Version: 1.0
+# Purpose: Operational rules for Artefak 2 (JKT Writing Skill).
+# This file does not contain empirical JKT frequencies; it consumes JKT_STYLE_PROFILE.yaml.
+
+schema_version: "1.0"
+
+rule_priority:
+  - scientific_validity
+  - evidence_traceability
+  - research_logic
+  - current_editorial_constraints
+  - validated_core_patterns
+  - common_patterns
+  - domain_patterns
+  - optional_patterns
+  - language_polish
+
+rule_mapping:
+  hard_constraint: "MUST"
+  core_pattern: "SHOULD_STRONGLY"
+  common_pattern: "SHOULD"
+  variable_pattern: "MAY"
+  optional_pattern: "MAY"
+  domain_pattern: "APPLY_IF_MATCHED"
+  anti_pattern: "AVOID"
+  do_not_enforce: "IGNORE"
+
+input_requirements:
+  research_identity:
+    - research_topic
+    - research_domain
+    - study_location
+    - study_period
+    - research_object
+  scientific_logic:
+    - research_problem
+    - research_gap
+    - research_objective
+  methods:
+    - research_design
+    - sampling_design
+    - sample_size
+    - variables
+    - analytical_methods
+  results:
+    - finding
+    - numerical_evidence
+    - statistical_evidence
+    - table_or_figure_link
+  literature:
+    preferred_fields:
+      - author
+      - year
+      - title
+      - journal
+      - doi
+      - verified_finding
+      - relevance
+
+input_status:
+  allowed:
+    - complete
+    - adequate
+    - partial
+    - insufficient
+  insufficient_behavior:
+    - "Generate only supported content."
+    - "Use explicit placeholders for missing critical information."
+    - "Never fabricate research details."
+
+scientific_integrity:
+  prohibited_fabrication:
+    - numerical_results
+    - statistical_significance
+    - sample_size
+    - instrument
+    - protocol
+    - coordinates
+    - species_identity
+    - doi
+    - references
+    - literature_findings
+  unsupported_fact_action: "PLACEHOLDER_OR_REMOVE"
+  causality_policy:
+    experimental_or_causal_design: "ALLOW_IF_SUPPORTED"
+    observational_association: "USE_ASSOCIATIONAL_OR_HEDGED_LANGUAGE"
+
+claim_evidence:
+  required_for_major_claims: true
+  claim_types:
+    C1: "user_provided_fact"
+    C2: "data_derived_result"
+    C3: "literature_supported_fact"
+    C4: "methodological_description"
+    C5: "interpretation"
+    C6: "causal_explanation"
+    C7: "management_implication"
+    C8: "recommendation"
+  strength_alignment:
+    direct_observation:
+      preferred_verbs: ["showed", "recorded", "was observed", "was found"]
+    statistical_association:
+      preferred_verbs: ["was associated with", "showed a relationship with"]
+    interpretation:
+      preferred_verbs: ["may indicate", "suggests", "may be related to"]
+    weak_evidence:
+      avoid_verbs: ["proves", "causes", "determines"]
+
+workflow:
+  - validate_input
+  - build_objective_map
+  - build_claim_evidence_map
+  - build_results_skeleton
+  - build_discussion_map
+  - draft_methods
+  - draft_introduction
+  - draft_conclusion
+  - draft_abstract
+  - draft_title
+  - run_cross_section_audit
+  - run_reference_audit
+  - run_style_conformity_check
+
+section_rules:
+  title:
+    inputs:
+      - primary_object
+      - primary_variable
+      - relationship_or_process
+      - location_if_relevant
+      - method_if_relevant
+    apply_patterns_from: "JKT_STYLE_PROFILE.title"
+    must:
+      - "Represent actual objective and results."
+      - "Avoid unsupported effect/causal claims."
+      - "Respect current journal word limit."
+    reject_if:
+      - unsupported_claim
+      - irrelevant_location
+      - unnecessary_method
+      - undefined_abbreviation
+
+  abstract:
+    apply_patterns_from: "JKT_STYLE_PROFILE.abstract"
+    generation_order: "AFTER_MAIN_SECTIONS"
+    must_include:
+      - objective
+      - core_method
+      - main_result
+      - conclusion
+    prioritize:
+      - quantitative_evidence_if_available
+    avoid:
+      - citations_unless_guideline_allows
+      - long_literature_review
+      - unsupported_implication
+    compression_order:
+      - generic_background
+      - secondary_method_detail
+      - secondary_result
+      - redundant_interpretation
+
+  introduction:
+    apply_patterns_from: "JKT_STYLE_PROFILE.introduction"
+    logic:
+      - context
+      - specific_context
+      - problem
+      - prior_knowledge
+      - gap
+      - justification
+      - objective
+    gap_rule:
+      required_logic:
+        - known
+        - unresolved
+        - why_unresolved_matters
+      prohibit:
+        - unsupported_claim_of_no_previous_study
+    literature_rule:
+      prefer: "SYNTHESIS"
+      avoid: "AUTHOR_BY_AUTHOR_LISTING"
+    objective_contract:
+      must_map_to:
+        - method
+        - result
+        - conclusion
+
+  methods:
+    apply_patterns_from: "JKT_STYLE_PROFILE.methods"
+    logic:
+      - where
+      - when
+      - what
+      - how
+      - how_much
+      - how_analyzed
+    priorities:
+      - reproducibility
+      - procedural_sequence
+      - units
+      - sample_size
+      - instruments
+      - analytical_methods
+    cite_when:
+      - adopted_method
+      - modified_protocol
+      - standard_equation
+      - standardized_identification
+    equation_requirements:
+      - equation
+      - variable_definitions
+      - units
+      - source_if_applicable
+
+  results:
+    apply_patterns_from: "JKT_STYLE_PROFILE.results"
+    must:
+      - "Start from explicit result inventory."
+      - "Map each result to a research objective."
+      - "Preserve numerical values exactly."
+    text_should_focus_on:
+      - dominant_pattern
+      - highest_lowest
+      - important_contrast
+      - statistical_pattern
+      - anomaly
+    avoid:
+      - "Repeating every table value."
+      - "Using significant without statistical support."
+      - "Introducing unsupported interpretation as raw result."
+
+  discussion:
+    apply_patterns_from: "JKT_STYLE_PROFILE.discussion"
+    unit_inputs:
+      - finding
+      - interpretation
+      - comparator_literature
+      - mechanism
+      - implication
+    default_logic_if_profile_missing:
+      - finding
+      - interpretation
+      - literature_comparison
+      - mechanism
+      - synthesis
+    comparison_types:
+      - agreement
+      - partial_agreement
+      - contrast
+      - extension
+      - no_direct_comparator
+    mechanism_classes:
+      - directly_tested
+      - supported_by_study_data
+      - supported_by_literature
+      - plausible_but_untested
+    stop_rule: "Do not infer beyond defensible evidence depth."
+    avoid:
+      - result_repetition_only
+      - citation_without_argumentative_function
+      - causal_language_from_observational_data
+      - generic_management_recommendation
+
+  conclusion:
+    apply_patterns_from: "JKT_STYLE_PROFILE.conclusion"
+    allowed_sources:
+      - research_objectives
+      - principal_results
+      - validated_interpretations
+    must:
+      - answer_objective
+      - avoid_new_data
+      - avoid_new_reference
+      - avoid_new_variable
+      - keep_scope_proportional_to_evidence
+    recommendation:
+      allow_if: "SUPPORTED_BY_FINDINGS"
+
+citation_control:
+  reference_sources_allowed:
+    - user_provided
+    - verified_database
+    - verified_doi
+    - verified_journal_page
+  must:
+    - "Every in-text citation maps to a reference-list entry."
+    - "Every major literature-dependent claim has support."
+    - "Citation supports the specific proposition, not merely the same topic."
+  cluster_rule: "Cluster only when sources support the same proposition."
+  placement_rule: "Place citation close to the supported claim."
+
+cross_section_contract:
+  chain: ["title", "gap", "objective", "method", "result", "discussion", "conclusion"]
+  objective_contract:
+    pattern: "O_i -> M_i -> R_i -> D_i -> C_i"
+    broken_chain_action: "FLAG_AND_REVISE"
+  variable_traceability:
+    checks:
+      - introduced
+      - measured
+      - reported
+      - interpreted
+      - concluded
+
+language_control:
+  scientific_register:
+    prefer:
+      - precise
+      - neutral
+      - concise
+      - terminology_consistent
+    avoid:
+      - promotional_language
+      - journalistic_language
+      - vague_intensifiers
+      - excessive_repetition
+  hedging:
+    use_when: "Inference is indirect or mechanism is untested."
+    avoid_when: "Reporting direct measured facts."
+  originality:
+    principle: "Original prose + validated rhetorical pattern."
+    prohibit: "Copying distinctive published sentences."
+
+anti_hallucination:
+  missing_reference: "[REFERENCE REQUIRED]"
+  missing_sample_size: "[SAMPLE SIZE REQUIRED]"
+  missing_study_period: "[STUDY PERIOD NOT PROVIDED]"
+  missing_method_detail: "[METHOD DETAIL REQUIRED]"
+
+output_modes:
+  planning_only:
+    outputs:
+      - title_architecture
+      - abstract_moves
+      - introduction_paragraph_map
+      - method_sequence
+      - result_hierarchy
+      - discussion_map
+      - conclusion_map
+  section_draft:
+    outputs:
+      - selected_section
+  full_draft:
+    outputs:
+      - title
+      - abstract
+      - keywords
+      - introduction
+      - materials_and_methods
+      - results_and_discussion
+      - conclusion
+      - references
+  traceable_draft:
+    outputs:
+      - prose
+      - paragraph_source_map
+      - claim_evidence_map
+  clean_manuscript:
+    outputs:
+      - publication_ready_text
+
+quality_gate:
+  must_pass:
+    - scientific_completeness_adequate
+    - objective_result_alignment_complete
+    - unsupported_major_claims_none
+    - citation_integrity_verified_or_marked
+    - cross_section_consistency_acceptable
+    - journal_pattern_conformity_acceptable

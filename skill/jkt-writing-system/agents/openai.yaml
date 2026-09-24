@@ -1,0 +1,7 @@
+# Codex / ChatGPT skill metadata (optional; SKILL.md frontmatter is authoritative)
+interface:
+  display_name: "JKT Writing System"
+  short_description: "Tulis, audit, dan analisis pola naskah Jurnal Kelautan Tropis (EN/ID)"
+  default_prompt: "Audit naskah saya sebelum dikirim ke Jurnal Kelautan Tropis."
+policy:
+  allow_implicit_invocation: true

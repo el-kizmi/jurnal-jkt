@@ -1,0 +1,525 @@
+schema_version: '1.0'
+document_name: JKT Operational Annotation Codebook
+purpose: Operational annotation manual for corpus coding in Artefak 1. Designed for reproducible sentence-, paragraph-, citation-,
+  and discourse-level annotation.
+scope:
+  primary_units:
+  - sentence
+  - paragraph
+  - citation
+  - results_discussion_unit
+  secondary_units:
+  - section
+  - table_figure_reference
+  - claim
+  languages:
+  - Indonesian
+  - English
+  default_policy: Code function, not wording.
+annotation_principles:
+- Annotate rhetorical/scientific function, not topic vocabulary.
+- Prefer the narrowest code that best captures the sentence's dominant function.
+- Use multi-label only when two functions are both indispensable and cannot be separated.
+- Do not infer unstated author intent beyond textual evidence.
+- Do not force a code when evidence is insufficient; use UNRESOLVED.
+- Keep editorial requirements separate from empirical corpus patterns.
+- Do not treat citations themselves as rhetorical moves; annotate citation function separately.
+workflow:
+- 1. Identify section and paragraph boundary.
+- 2. Segment into sentences; split semicolon-heavy sentences only if independent rhetorical functions are clearly separable.
+- 3. Assign one primary sentence-function code.
+- 4. Add one secondary code only if necessary.
+- 5. Annotate citation function(s) independently.
+- 6. For Results and Discussion, annotate discourse-unit sequence.
+- '7. Assign confidence: HIGH, MODERATE, LOW.'
+- 8. Flag ambiguity/boundary case if confidence is LOW.
+- 9. At paragraph level, assign dominant paragraph function from sentence composition.
+- 10. Record adjudication notes for disputed cases.
+confidence:
+  HIGH: Function is explicit and unambiguous.
+  MODERATE: Function is reasonably clear but overlaps with another plausible function.
+  LOW: Function depends on interpretation; requires adjudication.
+multi_label_policy:
+  default: SINGLE_PRIMARY_LABEL
+  secondary_label_allowed: true
+  max_labels_per_sentence: 2
+  rule: Use a secondary label only when removing it would materially misrepresent the sentence's role. Do not use multi-label
+    simply because a sentence contains multiple clauses.
+  priority_rules:
+  - Objective overrides generic justification if the sentence explicitly states research aim.
+  - Gap overrides prior-research if the main function is to establish what remains unknown.
+  - Result overrides interpretation when the sentence primarily reports observed data.
+  - Interpretation overrides explanation when the sentence states scientific meaning rather than mechanism.
+  - Mechanism overrides explanation when a process/pathway is explicitly proposed.
+  - Recommendation overrides implication when an action is explicitly proposed.
+special_labels:
+  UNRESOLVED: Insufficient textual evidence to assign a defensible function.
+  NONRHETORICAL: Administrative, formatting, or metadata content without rhetorical function.
+  MIXED_UNSPLITTABLE: Two equally dominant functions in one sentence that cannot be reliably split.
+introduction_codes:
+  I1.1:
+    label: Ecological importance
+    definition: States ecological significance of the research object, ecosystem, or process.
+    include_when:
+    - Sentence explains ecological role, ecosystem function, biodiversity relevance, trophic role, habitat role.
+    exclude_when:
+    - Economic importance only -> I1.2
+    - Management urgency only -> I1.3
+    - Specific research problem -> I3.*
+    positive_examples:
+    - Mangrove forests support coastal productivity and provide habitat for numerous aquatic organisms.
+    negative_example: Mangrove area in the study site declined by 20% over five years.
+  I1.2:
+    label: Economic importance
+    definition: States economic or livelihood relevance.
+    include_when:
+    - Fisheries value, market importance, livelihood contribution, economic dependence.
+    exclude_when:
+    - Management recommendation -> I1.3/I6 or C6/C7 depending on section.
+    positive_examples:
+    - Small-scale fisheries provide an important source of household income in coastal communities.
+  I1.3:
+    label: Management importance
+    definition: Frames the topic as relevant to management, policy, conservation, or governance.
+    include_when:
+    - Need for management, conservation relevance, policy significance.
+    exclude_when:
+    - Explicit recommendation in conclusion -> C7.
+    positive_examples:
+    - Accurate stock information is essential for effective fisheries management.
+  I1.4:
+    label: Biological significance
+    definition: States organismal or biological significance without focusing on ecological system function.
+    positive_examples:
+    - Reproductive biology provides key information on population renewal.
+  I1.5:
+    label: Environmental significance
+    definition: Frames environmental relevance such as pollution, climate, water quality, or habitat condition.
+    positive_examples:
+    - Sea surface temperature is a key environmental variable influencing marine productivity.
+  I1.6:
+    label: General scientific context
+    definition: Provides broad disciplinary context not better classified as ecological/economic/management/biological/environmental
+      importance.
+    positive_examples:
+    - Remote sensing is widely used to observe oceanographic conditions over large spatial scales.
+  I2.1:
+    label: Species context
+    definition: Introduces or narrows attention to the focal species/taxon.
+    positive_examples:
+    - Tenualosa macrura is an estuarine fish distributed in the Bengkalis Strait.
+  I2.2:
+    label: Ecosystem context
+    definition: Narrows attention to a focal ecosystem or habitat.
+    positive_examples:
+    - The study area is dominated by estuarine and mangrove habitats.
+  I2.3:
+    label: Geographic context
+    definition: Narrows discussion to a specific geographic setting relevant to the study.
+    positive_examples:
+    - The Malacca Strait is one of the most intensively used marine corridors in Southeast Asia.
+  I2.4:
+    label: Environmental condition
+    definition: Describes a specific environmental state or condition framing the study.
+    positive_examples:
+    - Seasonal freshwater input strongly modifies salinity in the estuary.
+  I2.5:
+    label: Fisheries context
+    definition: Describes fishery practice, exploitation, gear, effort, or fisheries setting.
+    positive_examples:
+    - The species is mainly harvested using drift gillnets by small-scale fishers.
+  I2.6:
+    label: Specific phenomenon
+    definition: Introduces the focal scientific phenomenon without yet asserting a problem or gap.
+    positive_examples:
+    - Catch rates vary spatially across fishing grounds.
+  I3.1:
+    label: Environmental pressure
+    definition: States environmental stressor or pressure affecting system/object.
+    positive_examples:
+    - Coastal development has increased sediment pressure on nearshore habitats.
+  I3.2:
+    label: Knowledge uncertainty
+    definition: States uncertainty or insufficient understanding, but not yet a literature-grounded gap claim.
+    positive_examples:
+    - The drivers of seasonal abundance remain uncertain.
+  I3.3:
+    label: Resource problem
+    definition: States depletion, declining stock, low abundance, overexploitation, or resource deterioration.
+    positive_examples:
+    - Reported catches have declined steadily over the last decade.
+  I3.4:
+    label: Management problem
+    definition: States insufficiency or challenge in management, regulation, monitoring, or governance.
+    positive_examples:
+    - Management is constrained by the absence of spatially explicit fishing-effort information.
+  I3.5:
+    label: Methodological problem
+    definition: States a limitation or challenge of methods used to study the phenomenon.
+    positive_examples:
+    - Conventional surveys provide limited temporal coverage for dynamic coastal waters.
+  I3.6:
+    label: Monitoring problem
+    definition: States limitations in monitoring frequency, coverage, or availability.
+    positive_examples:
+    - Routine monitoring is limited by sparse in situ observations.
+  I4.1:
+    label: Previous findings
+    definition: Reports findings from prior studies.
+    include_when:
+    - Sentence summarizes what previous studies found.
+    exclude_when:
+    - Main function is identifying what remains unknown -> I5.
+    positive_examples:
+    - Previous studies reported higher chlorophyll-a concentrations during the northeast monsoon.
+  I4.2:
+    label: Previous methods
+    definition: Describes methods used in prior studies.
+    positive_examples:
+    - Earlier studies estimated chlorophyll-a using MODIS imagery and field validation.
+  I4.3:
+    label: Previous study locations
+    definition: Highlights where prior research has been conducted.
+    positive_examples:
+    - Most previous assessments were conducted in Java and eastern Indonesia.
+  I4.4:
+    label: Scientific consensus
+    definition: Synthesizes convergent evidence from multiple studies.
+    positive_examples:
+    - Studies consistently indicate that salinity influences estuarine fish assemblages.
+  I4.5:
+    label: Conflicting findings
+    definition: Highlights disagreement or inconsistency among previous studies.
+    positive_examples:
+    - However, reported relationships between turbidity and abundance are inconsistent among estuaries.
+  I5:
+    label: Establishing research gap
+    definition: Explicitly or implicitly identifies unresolved knowledge, methodological, geographic, temporal, data, taxonomic,
+      management, application, or contextual deficiency.
+    include_when:
+    - Contains contrast between known and unknown.
+    - States under-studied context, missing evidence, lack of comparable data, or unresolved question.
+    exclude_when:
+    - General uncertainty without literature context -> I3.2
+    - Simple prior-study description -> I4.*
+    - Study objective -> I7
+    positive_examples:
+    - Although seasonal chlorophyll patterns are well documented offshore, comparable information for shallow estuarine waters
+      remains limited.
+    negative_example: Few studies have examined this topic.
+  I6:
+    label: Justifying the study
+    definition: Explains why resolving the identified problem or gap matters.
+    positive_examples:
+    - Such information is needed to support spatially targeted monitoring and management.
+  I7:
+    label: Stating research objective
+    definition: Explicitly states aim, objective, question, or hypothesis of the current study.
+    include_when:
+    - Contains 'aimed to', 'objective was', 'this study examined', or equivalent explicit research purpose.
+    exclude_when:
+    - Generic rationale -> I6.
+    positive_examples:
+    - This study aimed to evaluate the spatial distribution of chlorophyll-a and its relationship with sea surface temperature.
+abstract_codes:
+  AB-BG:
+    definition: Broad background/context establishing topic significance.
+    boundary: If sentence states a specific unresolved issue, prefer AB-PB or AB-GAP.
+  AB-PB:
+    definition: Specific problem motivating the study.
+    boundary: Problem can exist without explicit literature-based gap.
+  AB-GAP:
+    definition: Explicit research gap in the abstract.
+    boundary: Use only when unknown/understudied aspect is stated.
+  AB-OBJ:
+    definition: Study aim/objective/question.
+    priority: Overrides background/justification if explicit aim is present.
+  AB-MET:
+    definition: Research design, sampling, analytical method, or procedure.
+  AB-DAT:
+    definition: Sample/data scope or data-source description without procedural emphasis.
+  AB-RES:
+    definition: Observed empirical finding, numerical result, or statistical result.
+  AB-INT:
+    definition: Interpretation or meaning of the result.
+  AB-CON:
+    definition: Direct conclusion answering the objective.
+  AB-IMP:
+    definition: Scientific, management, monitoring, or application implication.
+methods_codes:
+  M1:
+    label: Study location
+    criterion: Where the study was conducted.
+  M2:
+    label: Study period
+    criterion: When the study/data collection occurred.
+  M3:
+    label: Research design
+    criterion: Overall experimental/observational design.
+  M4:
+    label: Population/sample
+    criterion: Population, sample, sample size, inclusion criteria.
+  M5:
+    label: Sampling design
+    criterion: Station selection, replication, stratification, randomization.
+  M6:
+    label: Sample collection
+    criterion: How specimens/data were collected.
+  M7:
+    label: Equipment/material
+    criterion: Instrument, gear, reagent, equipment specifications.
+  M8:
+    label: Field measurement
+    criterion: In situ measurement procedures.
+  M9:
+    label: Laboratory analysis
+    criterion: Laboratory preparation/analysis.
+  M10:
+    label: Derived variable/calculation
+    criterion: Formula, index, transformation, derived metric.
+  M11:
+    label: Statistical analysis
+    criterion: Statistical tests, alpha, model, inference.
+  M12:
+    label: Spatial analysis
+    criterion: GIS, interpolation, remote sensing spatial processing.
+  M13:
+    label: Modeling
+    criterion: Predictive, mechanistic, stock, ecological, or other model.
+  M14:
+    label: Software
+    criterion: Software/platform/package used.
+  M15:
+    label: Quality assurance/control
+    criterion: Calibration, validation, QA/QC, replicate control.
+  M16:
+    label: Ethical/permit information
+    criterion: Ethics, permits, authorization where relevant.
+results_discussion_codes:
+  R:
+    label: Empirical result
+    definition: Reports a finding from current study.
+    include_when:
+    - Qualitative or quantitative finding directly derived from study data.
+    exclude_when:
+    - Meaning of result -> I
+    - Mechanistic reason -> M
+  Q:
+    label: Quantitative evidence
+    definition: Numerical value, percentage, range, mean, SD/SE, p-value, coefficient, model metric.
+    note: Usually secondary to R or S; may co-occur.
+  F:
+    label: Figure/table reference
+    definition: Explicitly points reader to figure/table.
+    note: Annotation can be secondary if sentence also reports a result.
+  C:
+    label: Comparison
+    definition: Compares groups, sites, periods, variables, or current results internally.
+    exclude_when:
+    - Comparison with external literature -> L.
+  L:
+    label: Literature comparison
+    definition: Compares current study with previous research.
+    positive_examples:
+    - This pattern agrees with findings reported for another tropical estuary.
+  E:
+    label: Explanation
+    definition: Provides a reason for a pattern without specifying a detailed causal process.
+    positive_examples:
+    - The higher abundance may reflect more favorable environmental conditions at this site.
+  M:
+    label: Mechanism
+    definition: Proposes or describes a process/pathway explaining how or why a pattern occurs.
+    positive_examples:
+    - Higher salinity may alter osmoregulatory costs, thereby affecting habitat use.
+  I:
+    label: Interpretation
+    definition: States scientific meaning, inference, significance, or what the result suggests.
+    positive_examples:
+    - These results suggest that the inner estuary functions as an important nursery habitat.
+  U:
+    label: Uncertainty
+    definition: States uncertainty, limitation of inference, variability, or caution.
+  S:
+    label: Statistical inference
+    definition: Reports statistical significance, model inference, confidence interval, test outcome.
+  A:
+    label: Application
+    definition: States practical application without necessarily prescribing management action.
+  G:
+    label: Management implication
+    definition: Links result to management, conservation, monitoring, or policy relevance.
+  K:
+    label: Knowledge implication
+    definition: States contribution to scientific understanding.
+  T:
+    label: Transition/synthesis
+    definition: Synthesizes preceding evidence or transitions to next analytical point.
+conclusion_codes:
+  C1:
+    label: Objective answer
+    criterion: Direct answer to study aim/question.
+  C2:
+    label: Main finding
+    criterion: Principal empirical finding stated concisely.
+  C3:
+    label: Quantitative finding
+    criterion: Key number/statistic retained in conclusion.
+  C4:
+    label: Interpretation
+    criterion: Meaning of main finding.
+  C5:
+    label: Scientific implication
+    criterion: Contribution to knowledge.
+  C6:
+    label: Management implication
+    criterion: Management/conservation relevance.
+  C7:
+    label: Recommendation
+    criterion: Explicit proposed action.
+  C8:
+    label: Future research
+    criterion: Explicit need for further study.
+  C9:
+    label: Limitation
+    criterion: Limitation/caution in conclusion.
+citation_annotation:
+  rule: Annotate citation function independently from sentence function.
+  codes:
+    CIT-BG: Background support
+    CIT-DEF: Definition support
+    CIT-MET: Method/protocol support
+    CIT-SUP: Supports current interpretation/finding
+    CIT-CON: Contrasts with current interpretation/finding
+    CIT-MEC: Supports proposed mechanism
+    CIT-BEN: Benchmark/reference value
+    CIT-DAT: External data source
+    CIT-TAX: Taxonomy/identification
+    CIT-MGT: Management/policy support
+  multiple_citations: If multiple references in one cluster serve the same function, annotate once for the cluster. If functions
+    differ, separate them.
+paragraph_annotation:
+  dominant_function_rule: Assign paragraph function based on the function carrying the paragraph's main argumentative load,
+    not merely the first sentence.
+  paragraph_types:
+  - CONTEXT
+  - SPECIFIC_CONTEXT
+  - PROBLEM
+  - PRIOR_RESEARCH
+  - GAP
+  - JUSTIFICATION
+  - OBJECTIVE
+  - METHOD_PROCEDURE
+  - RESULT_REPORTING
+  - DISCUSSION_EXPLANATORY
+  - DISCUSSION_COMPARATIVE
+  - DISCUSSION_MECHANISTIC
+  - DISCUSSION_SYNTHESIS
+  - CONCLUSION
+  - RECOMMENDATION
+  - MIXED
+  mixed_threshold: Use MIXED only when no single function accounts for at least roughly half of the paragraph's rhetorical
+    role.
+boundary_cases:
+- case: Prior research + gap in one sentence
+  example: Previous studies examined coral cover, but information on juvenile recruitment remains limited.
+  primary: I5
+  secondary: I4.1
+  reason: Main argumentative purpose is establishing what remains unknown.
+- case: Result + interpretation
+  example: Abundance was highest at Station 3, suggesting that this area provides more favorable habitat.
+  primary: R
+  secondary: I
+  reason: Observed finding is explicit and precedes inference.
+- case: Result + statistical inference
+  example: Mean abundance differed significantly among stations (p < 0.05).
+  primary: R
+  secondary: S
+  reason: Sentence both reports result and statistical inference.
+- case: Explanation vs mechanism
+  example: Higher abundance may be related to better water quality.
+  code: E
+  reason: Provides general reason but no process/pathway.
+- case: Mechanism
+  example: Lower salinity may reduce osmoregulatory stress, increasing habitat suitability.
+  code: M
+  reason: Explicit biological process links cause and response.
+- case: Implication vs recommendation
+  example: The area should be prioritized for seasonal monitoring.
+  code: C7 or G depending section
+  reason: Explicit action proposed; recommendation dominates implication.
+- case: Context vs problem
+  example: Fishing effort has increased rapidly over the last five years.
+  decision: Use I3.3/I3.4 only if framed as a resource/management problem; otherwise I2.5.
+  reason: Problem coding requires evaluative/problematic framing.
+exclusion_rules:
+- Do not code species description as prior research unless it reports a literature-derived finding.
+- Do not code every sentence with a citation as I4.*; citation function and sentence function are separate.
+- Do not code a numeric statement as Q alone if it is clearly part of an empirical result; use R primary, Q secondary.
+- Do not code 'therefore' automatically as implication; determine actual rhetorical function.
+- Do not code a method citation as prior research when it only attributes a protocol.
+- Do not code general statements of importance as research gap.
+- Do not code management relevance as recommendation unless a concrete action is proposed.
+adjudication_protocol:
+  trigger:
+  - Annotator confidence LOW
+  - Two annotators disagree on primary code
+  - Sentence would require more than two labels
+  - Gap vs problem ambiguity
+  - Explanation vs mechanism ambiguity
+  - Result vs interpretation ambiguity
+  steps:
+  - Review sentence in paragraph context.
+  - Identify the sentence's primary argumentative contribution.
+  - Apply priority rules.
+  - If disagreement persists, record both candidate codes.
+  - Assign adjudicated code and rationale.
+  - Add case to boundary-case library if likely to recur.
+  record_fields:
+  - article_id
+  - section
+  - paragraph_id
+  - sentence_id
+  - candidate_codes
+  - final_code
+  - rationale
+  - adjudicator
+inter_annotator_reliability:
+  recommended_pilot_size: 10-15% of corpus or at least 5 articles
+  metrics:
+  - Percent agreement
+  - Cohen's kappa for two annotators
+  - Krippendorff's alpha for multiple annotators or missing labels
+  target:
+    acceptable: '>= 0.67 for exploratory coding'
+    preferred: '>= 0.80 for stable operational use'
+  low_reliability_action:
+  - Review ambiguous code definitions.
+  - Expand examples and exclusion rules.
+  - Merge codes that cannot be reliably distinguished.
+  - Re-annotate pilot subset.
+annotation_record_schema:
+  article_id: null
+  section: null
+  paragraph_id: null
+  sentence_id: null
+  sentence_text: null
+  primary_code: null
+  secondary_code: null
+  citation_codes: []
+  result_discussion_units: []
+  gap_type: null
+  paragraph_function: null
+  confidence: null
+  notes: null
+quality_control:
+- No sentence may have more than two rhetorical labels without adjudication.
+- All I5 gap annotations should include a gap_type where possible.
+- All R/S/Q annotations should be checked against Results context.
+- All citation codes must be attached to an actual citation marker.
+- All paragraph functions must be derived from sentence-level coding.
+- All LOW-confidence annotations must be reviewed before corpus aggregation.
+- Pattern frequencies must be computed only after adjudication.
+versioning:
+  current_version: '1.0'
+  change_policy: Every code-definition change must increment version and document whether prior annotations require recoding.

@@ -1,0 +1,480 @@
+# JKT pattern database (from Artefak 1 schema v1.0; anti-pattern IDs renamed JKT-ANTI-NNN to match pattern_codebook prefixes)
+# Generated 2026-09-23 from 14 articles of Jurnal Kelautan Tropis Vol. 29(2), June 2026.
+#
+# READ FIRST — EVIDENCE CEILING
+#   * The whole corpus is ONE issue. Under §47, no pattern can be designated JKT-CORE. Every empirical pattern
+#     below is PROVISIONAL, whatever its frequency tier.
+#   * n = 14 eligible articles, just below the §8.2 exploratory minimum of 15.
+#   * 5 of 14 articles form one author-linked cluster (C1, Universitas Diponegoro). The journal is published by
+#     Universitas Diponegoro, so a home-institution effect cannot be separated from a journal effect.
+#   * Temporal stability cannot be assessed (one issue, one year). No holdout validation was performed (§64).
+#   * Frequency tiers (§45): CORE >= 80% | COMMON 60–79% | VARIABLE 30–59% | RARE < 30%. Here the tier describes
+#     frequency only. It is NOT a JKT-CORE designation.
+#   * Confidence (§46) is capped at MODERATE. MODERATE = tier >= COMMON, holds in both languages (>= 5/7 each)
+#     and in >= 7 of 9 independent units. LOW = otherwise. INSUFFICIENT = fewer than 5 relevant cases.
+#   * Source layers (§9): GUIDELINE = JKT author guidelines (ejournal2.undip.ac.id/index.php/jkt/about/submissions);
+#     CORPUS = observed across independent articles; DOMAIN = tied to a method family; LANGUAGE = differs EN vs ID;
+#     AUTHOR-CLUSTER = concentrated in C1.
+
+journal:
+  name: Jurnal Kelautan Tropis
+  issn: {print: "1410-8852", electronic: "2528-3111"}
+  corpus_period: "2026 (Vol. 29 No. 2 only)"
+  corpus_size: {received: 15, eligible: 14, excluded: 1, exclusion_reason: "document (9).pdf is byte-identical to document (8).pdf (MD5 14ebbb92…)"}
+  languages: {EN: 7, ID: 7}
+  article_types: {original_research: 14}
+  domains: {MARECO: 2, MARBIO: 2, POLL: 2, RS: 2, GEO: 1, FISH: 1, COAST: 1, MICRO: 1, OCEAN: 1, OTHER: 1}
+  method_families: {FIELD_ECOLOGICAL_INDEX: [d4, d6, d8, d10, d13, d14], LAB_CHEMICAL_OR_MOLECULAR: [d2, d3, d7, d11], ACOUSTIC: [d12, d15, d16], SEDIMENTOLOGY: [d5]}
+  institutions: {Universitas_Diponegoro: 7, IPB_University: 3, Universitas_Brawijaya: 2, Universitas_Tanjungpura: 1, UMRAH: 1}
+  author_clusters: {C1: [d4, d6, d8, d10, d11], C2: [d15, d16], effective_independent_units: 9}
+  pattern_saturation: NOT_REACHED
+  holdout_validation: NOT_CONDUCTED
+  coder: "single coder; no inter-rater reliability"
+
+# ---------------------------------------------------------------------------------------------
+# A. EDITORIAL CONSTRAINTS vs EMPIRICAL PRACTICE (§79 conflict protocol)
+# ---------------------------------------------------------------------------------------------
+editorial_constraints:
+  - id: JKT-GUIDE-001
+    prescriptive_rule: "Title max 12 words, no abbreviations or formulas"
+    empirical_practice: "Median 14.5 words (IQR 11.75–17, range 11–17); 1/14 uses chemical symbols (d11)"
+    compliance_rate: "5/14 (36%) for word count; 13/14 (93%) for no formulas"
+    source: GUIDELINE
+  - id: JKT-GUIDE-002
+    prescriptive_rule: "Abstract max 250 words, one paragraph"
+    empirical_practice: "Median 220.5 words (IQR 200–248, range 130–272)"
+    compliance_rate: "12/14 (86%); over the limit: d13 (264), d16 (272)"
+    source: GUIDELINE
+  - id: JKT-GUIDE-003
+    prescriptive_rule: "Keywords 3–5"
+    empirical_practice: "Median 4.5 (range 3–6)"
+    compliance_rate: "13/14 (93%); d5 has 6"
+    source: GUIDELINE
+  - id: JKT-GUIDE-004
+    prescriptive_rule: "Max 10 pages including figures and tables"
+    empirical_practice: "Median 10 pages (IQR 9–13.25, range 7–18)"
+    compliance_rate: "8/14 (57%)"
+    source: GUIDELINE
+  - id: JKT-GUIDE-005
+    prescriptive_rule: "Introduction = 15–20% of article length"
+    empirical_practice: "Median 17.4% of body prose (IQR 14.2–19.8, range 11.9–37.9)"
+    compliance_rate: "7/14 (50%), measured on body prose words rather than full article length"
+    source: GUIDELINE
+  - id: JKT-GUIDE-006
+    prescriptive_rule: "Introduction contains background, literature review, gap analysis, objectives"
+    empirical_practice: "Background 14/14; literature 14/14; explicit gap 11/14; objective 14/14"
+    compliance_rate: "11/14 (79%) contain all four"
+    source: GUIDELINE
+  - id: JKT-GUIDE-007
+    prescriptive_rule: "Sections: Introduction, Methods, Results & Discussion, Conclusions, References"
+    empirical_practice: "All present in 14/14; heading wording varies (RESULT/RESULTS/RESULTS AND DISCUSSIONS; MATERIAL/MATERIALS; 'CONCLUSSION' in d14 and d16)"
+    compliance_rate: "14/14 (100%)"
+    source: GUIDELINE
+  - id: JKT-GUIDE-008
+    prescriptive_rule: "APA 7th edition, author–year"
+    empirical_practice: "Author–year in 14/14; detailed APA conformance NOT_DETERMINED"
+    compliance_rate: "14/14 author–year"
+    source: GUIDELINE
+  - id: JKT-GUIDE-009
+    prescriptive_rule: "Abstract in English and/or Indonesian"
+    empirical_practice: "All 7 ID articles carry English title + English abstract + Indonesian abstract; all 7 EN articles carry English only"
+    compliance_rate: "14/14 (100%)"
+    source: GUIDELINE
+
+# ---------------------------------------------------------------------------------------------
+# B. SECTION PROFILES (descriptive statistics; n = 14 unless stated)
+# ---------------------------------------------------------------------------------------------
+macrostructure:
+  sequence: [TITLE, AUTHORS, ABSTRACT_EN, KEYWORDS, ABSTRAK_ID_if_ID_article, INTRODUCTION, MATERIALS_AND_METHODS, RESULTS_AND_DISCUSSION, CONCLUSION, ACKNOWLEDGEMENTS_optional, REFERENCES]
+  body_prose_share_pct:        # prose words only; tables/captions excluded
+    introduction: {median: 17.4, IQR: [14.2, 19.8]}
+    methods: {median: 20.0, IQR: [17.4, 25.3]}
+    results_discussion: {median: 55.8, IQR: [51.9, 60.5]}
+    conclusion: {median: 4.6, IQR: [3.9, 4.9]}
+  acknowledgements_present: "7/14"
+
+title:
+  word_count: {median: 14.5, IQR: [11.75, 17], range: [11, 17], EN_median: 16, ID_median: 13}
+  archetypes: {T6_ASSESSMENT: 4, T4_DIVERSITY_ABUNDANCE_DISTRIBUTION: 3, T7_METHOD_TARGET: 3, T1_VARIABLE_OBJECT_LOCATION: 2, T5_BIOLOGICAL_CHARACTERISTIC: 1, T2_RELATIONSHIP_XY: 1}
+  dominant_archetype: "none (no archetype above 30%)"
+  information_order: "[PHENOMENON|VARIABLE|METHOD] → [OBJECT|TAXON|ECOSYSTEM] → [LOCATION]"
+  location_present: "12/14"
+  location_terminal_when_present: "12/12"
+  scientific_name: "3/14"
+  colon: "1/14"
+  question_or_result_claim: "0/14"
+
+abstract:
+  words: {median: 220.5, IQR: [200, 248], range: [130, 272]}
+  sentences: {median: 9.5, IQR: [8, 10.25], range: [5, 12]}
+  moves_frequency: {BG: "14/14", GAP_or_PROBLEM: "8/14", OBJ: "14/14", MET: "14/14", RES: "14/14", numeric_RES: "14/14", statistical_RES: "4/14", CON_or_IMP: "11/14", citation: "0/14"}
+  macro_order: "BG → (GAP|PB) → OBJ → MET → RES → (INT) → (CON|IMP); monotone in 13/14 (d3 inserts one MET after the first RES)"
+  objective_sentence_position: "S2–S4 in 14/14"
+  background_sentences_before_objective: {median: 1.5, range: [1, 3]}
+  method_sentences: {median: 2, range: [1, 4]}
+  closing_move: {CON_or_IMP: 11, RESULT_only: 3}   # result-only: d5, d8, d11
+
+introduction:
+  paragraphs: {median: 4, IQR: [3, 5], range: [2, 7], EN_median: 5, ID_median: 4}
+  words: {median: 586.5, EN_median: 589, ID_median: 512}
+  citation_density: {per_sentence_median: 0.72, per_sentence_IQR: [0.56, 1.07], per_paragraph_median: 3.1, paragraphs_with_citation: "50/59 (85%)"}
+  opening_move: {importance_or_significance: 8, definition_or_general_context: 3, problem_first: 3}
+  objective_position: {final_paragraph: "14/14", final_sentence_or_followed_only_by_contribution_or_specification: "14/14"}
+  objective_lexeme: "aim/bertujuan/tujuan in 10/14; alternatives: 'addresses this gap by', 'berfokus pada', 'dilakukan untuk', 'employs … to'"
+  objective_connective: "Therefore / Oleh karena itu / Consequently / maka in 10/14"
+  expected_contribution_sentence: "5/14"
+  gap:
+    visibility: {EXPLICIT: 11, IMPLICIT: 2, ABSENT: 1}
+    position_last_two_paragraphs: "10/11 explicit"
+    contrastive_marker: "9/11 explicit (However, Namun, Despite, Although, In contrast)"
+    types_among_explicit: {G-GEO_or_G-CON: 8, G-METH: 5, G-KNOW: 3, G-DATA: 2, G-TAX: 1}   # multiple types per article allowed
+    lexical_markers: ["limited / still limited / masih terbatas", "scarce", "remains absent / belum ada", "have yet to", "masih minim", "belum banyak"]
+  funnel:
+    monotone_broad_to_specific: "10/14"
+    exceptions: {d3: "method-background paragraphs re-broaden scope", d7: "gap placed mid-P1", d11: "local problem first, then general chemistry", d16: "site first, then general biology"}
+  research_question_or_hypothesis: "explicit research question 1/14 (d7); formal hypothesis 0/14"
+
+methods:
+  opens_with_location_or_time: "13/14"
+  location_map_figure: ">= 11/14"
+  component_sequence: "M1 LOCATION/M2 TIME → M5 SAMPLING DESIGN → M6 COLLECTION → M8/M9 FIELD OR LAB MEASUREMENT → M10 DERIVED VARIABLE (equation + symbol legend) → M11 STATISTICAL/DATA ANALYSIS"
+  equations_with_symbol_legend: {overall: "9/14", FIELD_ECOLOGICAL_INDEX: "6/6", note: "DOMAIN pattern"}
+  sampling_design_named: "purposive 4, random 1, stratified 2, transect/plot 2, other/unnamed 5"
+  software_with_version: "6/14"
+  statistical_analysis_described: "5/14"
+  calibration_or_standard_protocol: "3/14 (d7 CLSI; d15, d16 acoustic calibration): DOMAIN"
+  sampling_date_in_methods: "7/14 confirmed; NOT_DETERMINED for d2, d3, d6, d7, d11"
+  citation_density_per_sentence: {median: 0.35, IQR: [0.29, 0.48]}
+  reproducibility_index: NOT_DETERMINED    # not scored per item in the baseline corpus
+
+results:
+  format: "Combined Results and Discussion 14/14 (GUIDELINE + CORPUS)"
+  organization: "one variable/analysis block at a time, following Methods order: 13/14 (d11 undifferentiated)"
+  paragraphs_coded: 187
+  paragraph_opening_function: {R_result: "41%", F_figure_table: "11%", D_definition: "10%", E_explanation: "7%", I_interpretation: "6%", X_method: "5%", S_statistic: "5%", other: "15%"}
+  result_first_is_modal_opening: "14/14 articles"
+  figure_table_pointer_then_result: "P(R | F) = 0.73"
+  statistical_evidence:
+    p_values_reported: "2/14 (d12, d14)"
+    regression_or_correlation_coefficients: "4/14 (d4, d12, d14, d16)"
+    classification_performance_metrics: "1/14 (d15)"
+    descriptive_or_index_only: "9/14"
+
+discussion:
+  paragraph_closing_function: {L_literature: "40%", I_interpretation: "21%", R_result: "10%", E_explanation: "9%", G_A_K_T_implication_or_synthesis: "10%"}
+  archetypes:                                  # 'A..B' = A occurs before B within one paragraph
+    - {chain: "R … L", paragraphs: "45%", articles: "14/14", EN: "7/7", ID: "7/7"}
+    - {chain: "R … I", paragraphs: "41%", articles: "13/14", EN: "7/7", ID: "6/7"}
+    - {chain: "R … E … L (explain, then cite)", paragraphs: "19%", articles: "13/14", EN: "6/7", ID: "7/7"}
+    - {chain: "R … I … L", paragraphs: "26%", articles: "11/14", EN: "7/7", ID: "4/7"}
+    - {chain: "R … L … E (cite agreement, then explain)", paragraphs: "11%", articles: "11/14", EN: "6/7", ID: "5/7"}
+    - {chain: "R … B (classify against criterion or standard)", paragraphs: "16%", articles: "10/14", EN: "6/7", ID: "4/7"}
+    - {chain: "D … R (definition-led)", paragraphs: "7%", articles: "6/14", EN: "3/7", ID: "3/7"}
+    - {chain: "R … M (mechanism)", paragraphs: "11%", articles: "6/14", EN: "3/7", ID: "3/7"}
+    - {chain: "contains G/K/A (implication or recommendation)", paragraphs: "10%", articles: "7/14", EN: "6/7", ID: "1/7"}
+    - {chain: "contains U (uncertainty/limitation)", paragraphs: "5%", articles: "6/14", EN: "4/7", ID: "2/7"}
+    - {chain: "contains LX (contrasting literature)", paragraphs: "4%", articles: "4/14", EN: "1/7", ID: "3/7"}
+  top_transitions:                             # computed from coded chains; P(j|i) over non-repeating transitions
+    - {from: D, to: L, count: 22, p: 0.79}
+    - {from: F, to: R, count: 32, p: 0.73}
+    - {from: E, to: L, count: 55, p: 0.71}
+    - {from: M, to: L, count: 25, p: 0.68}
+    - {from: I, to: L, count: 54, p: 0.47}
+    - {from: B, to: L, count: 12, p: 0.36}
+    - {from: B, to: I, count: 12, p: 0.36}
+    - {from: R, to: I, count: 53, p: 0.33}
+    - {from: L, to: I, count: 38, p: 0.28}
+    - {from: L, to: R, count: 38, p: 0.28}
+    - {from: S, to: I, count: 11, p: 1.00}
+  depth_max_per_paragraph:                     # L1 description … L5 broader implication
+    all: {L1: "7%", L2: "12%", L3: "54%", L4: "17%", L5: "10%"}
+    EN: {L1: "7%", L2: "6%", L3: "57%", L4: "15%", L5: "16%"}
+    ID: {L1: "7%", L2: "22%", L3: "50%", L4: "19%", L5: "1%"}
+  rd_section_ends_with_synthesis_implication_or_limitation: {all: "7/14", EN: "6/7", ID: "1/7"}
+  causality:
+    unhedged_causal_attribution_in_observational_or_correlational_design: ">= 7/14 articles (d2, d4, d6, d8, d12, d13, d15)"
+    hedged_to_unhedged_marker_ratio: {median: 1.24, EN_median: 2.0, ID_median: 1.14}
+    indonesian_hedge_formula: "'diduga' / 'Hal ini diduga karena' in 5/7 ID articles (d8, d10, d11, d12, d13; 4 of 5 are Undip)"
+
+conclusion:
+  paragraphs: "1 in 14/14"
+  citations: "0/14"
+  words: {median: 136.5, IQR: [87, 186]}
+  sentences: {median: 4.5, IQR: [4, 9]}
+  opening: "main finding (C1/C2) 14/14; EN opens 'This study demonstrated/confirmed …' 5/7, ID 0/7"
+  moves_frequency: {C2_main_finding: "14/14", C3_numeric_restatement: "11/14", C4_interpretation: "10/14", C5_to_C7_implication_or_recommendation: "8/14", C8_future_research: "3/14", C9_limitation: "2/14"}
+  typical_sequence: "C2 → C3 (×1–6) → C4 → (C6|C7)"
+  result_only_conclusion: "3/14 (d8, d10, d11), all in author cluster C1"
+  objective_alignment: {DIRECT: 12, PARTIAL: 2, WEAK: 0, UNRELATED: 0}
+  new_information: "0/14 detected"
+
+citations:
+  density_per_sentence: {introduction: {median: 0.72, IQR: [0.56, 1.07]}, methods: {median: 0.35, IQR: [0.29, 0.48]}, results_discussion: {median: 0.42, IQR: [0.29, 0.48]}, conclusion: 0}
+  gradient: "Introduction > R&D ≈ Methods > Conclusion (0)"
+  form: {non_integral_share_all: 0.85, narrative_share_EN: 0.08, narrative_share_ID: 0.24, non_integral_dominant_articles: "12/14", exceptions: {d10: "81% narrative (C1)", d13: "47% narrative"}}
+  functions_observed:
+    introduction: [CIT-BG, CIT-SUP (importance/threat), CIT-DAT (production statistics), prior findings preceding gap]
+    methods: [CIT-MET, CIT-TAX, CIT-BEN (classification criteria)]
+    results_discussion: [CIT-SUP (agreement, dominant), CIT-MEC, CIT-BEN (criteria, national regulations), CIT-DEF, CIT-CON (rare, 4/14)]
+  position: "paragraph-final citation sentence closes 40% of R&D paragraphs; citation clusters of 2–4 sources common in the Introduction"
+
+references:
+  count: {median: 37, IQR: [24.75, 47], range: [14, 63], EN_median: 40, ID_median: 26}
+  recent_0_5y_ratio: {median: 0.43, IQR: [0.28, 0.66], EN_median: 0.64, ID_median: 0.38}
+  within_10y_ratio: {median: 0.79, IQR: [0.68, 0.86]}
+  doi_ratio: {median: 0.69, IQR: [0.47, 0.90]}
+  median_reference_year: {median: 2019.75, range: [2007, 2023]}
+  source_profile_notes: "mostly journal articles; national regulations/standards in d4, d13; theses rare (<= 2 per article)"
+
+language:
+  sentence_length_words: {introduction_median: 28.0, rd_median: 24.8, EN_intro_mean: 30.7, ID_intro_mean: 25.4}
+  voice: "impersonal; 'this study' as agent; first person EN 3/7 (d3, d7, d16), ID 0/7"
+  hedging: "EN: likely, may, suggests, is thought to; ID: diduga, dimungkinkan, mengindikasikan"
+  transitions:
+    gap: [However, Despite, Although, "In contrast", Namun, "Akan tetapi"]
+    objective: [Therefore, Consequently, "Oleh karena itu", maka]
+    agreement: ["consistent with", "in line with", "similar to", "sesuai dengan", "sama dengan", "sejalan dengan", "didukung oleh", "diperkuat oleh", menambahkan]
+    synthesis: [Overall, Collectively, "Secara keseluruhan", "Dengan demikian"]
+
+# ---------------------------------------------------------------------------------------------
+# C. PATTERN DATABASE (§53) — all status PROVISIONAL (single issue)
+# ---------------------------------------------------------------------------------------------
+patterns:
+  - {pattern_id: JKT-MACRO-001, section: document, type: STRUCTURAL, description: "IMRaD with a combined Results and Discussion section and a separate one-paragraph Conclusion", evidence: "14/14", frequency: 100, domains: all, languages: both, guideline_support: yes, tier: CORE, confidence: MODERATE, source: GUIDELINE+CORPUS}
+  - {pattern_id: JKT-MACRO-002, section: document, type: STRUCTURAL, description: "Body prose split: Introduction ~17%, Methods ~20%, R&D ~56%, Conclusion ~4.5%", evidence: "IQRs in macrostructure", frequency: null, tier: DESCRIPTIVE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-TITLE-001, section: title, type: STRUCTURAL, description: "Location, when present, is the final element of the title, often as a hierarchy (site, regency, province)", evidence: "12/14 (12/12 conditional)", frequency: 86, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-TITLE-002, section: title, type: STRUCTURAL, description: "Nominal, descriptive titles: no result claim, no question", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-TITLE-003, section: title, type: STRUCTURAL, description: "Titles exceed the 12-word guideline (median 14.5)", evidence: "9/14 exceed", frequency: 64, tier: COMMON, confidence: LOW, source: "CORPUS (conflicts with GUIDELINE)"}
+  - {pattern_id: JKT-ABS-001, section: abstract, type: RHETORICAL, description: "Macro-order BG → (GAP) → OBJ → MET → RES → (CON/IMP)", evidence: "13/14 monotone; 14/14 contain BG, OBJ, MET, RES", frequency: 93, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-ABS-002, section: abstract, type: RHETORICAL, description: "Opens with 1–3 background sentences; objective in sentence 2–4", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-ABS-003, section: abstract, type: EVIDENTIAL, description: "Reports numeric results (values, ranges, indices)", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-ABS-004, section: abstract, type: RHETORICAL, description: "Closes with a conclusion or implication sentence", evidence: "11/14 (exceptions d5, d8, d11)", frequency: 79, tier: COMMON, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-ABS-005, section: abstract, type: CITATIONAL, description: "No citations in the abstract", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-ABS-006, section: abstract, type: RHETORICAL, description: "Explicit gap or problem sentence before the objective", evidence: "8/14", frequency: 57, tier: VARIABLE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-ABS-007, section: front, type: STRUCTURAL, description: "Indonesian-language articles carry an English title and abstract above the Indonesian abstract", evidence: "7/7 ID", frequency: 100, tier: CORE, confidence: MODERATE, source: "GUIDELINE+CORPUS (LANGUAGE)"}
+  - {pattern_id: JKT-INTRO-001, section: introduction, type: RHETORICAL, description: "Research objective stated in the final Introduction paragraph, at its end or followed only by a contribution or specification sentence", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-INTRO-002, section: introduction, type: ARGUMENTATIVE, description: "Explicit gap statement within the last two paragraphs, signalled by a contrastive connective", evidence: "gap explicit 11/14; in last two paragraphs 10/11; contrastive marker 9/11", frequency: 79, tier: COMMON, confidence: MODERATE, source: "GUIDELINE+CORPUS"}
+  - {pattern_id: JKT-INTRO-003, section: introduction, type: ARGUMENTATIVE, description: "Gap is mainly geographic or contextual: the topic is studied elsewhere but not at this site or setting", evidence: "8/11 explicit gaps", frequency: 73, tier: COMMON, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-INTRO-004, section: introduction, type: COHERENCE, description: "Objective introduced by a causal or consequential connective (Therefore, Oleh karena itu)", evidence: "10/14", frequency: 71, tier: COMMON, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-INTRO-005, section: introduction, type: STRUCTURAL, description: "Monotone broad-to-specific funnel", evidence: "10/14", frequency: 71, tier: COMMON, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-INTRO-006, section: introduction, type: CITATIONAL, description: "Citation-dense: ~0.7 citations per sentence; 85% of paragraphs cited", evidence: "median CDs 0.72", frequency: null, tier: DESCRIPTIVE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-INTRO-007, section: introduction, type: RHETORICAL, description: "Expected-contribution sentence after the objective", evidence: "5/14", frequency: 36, tier: VARIABLE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-METH-001, section: methods, type: PROCEDURAL, description: "Opens with study location and time (or sample origin), usually with a location map", evidence: "13/14; map >= 11/14", frequency: 93, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-METH-002, section: methods, type: PROCEDURAL, description: "Order: location/time → sampling → measurement → derived variables → analysis", evidence: "qualitative; 13/14", frequency: 93, tier: CORE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-METH-003, section: methods, type: PROCEDURAL, description: "Index or derived-variable equations shown with a symbol legend ('Keterangan', 'Where', 'Description')", evidence: "9/14 overall; 6/6 field-ecological-index", frequency: 64, tier: COMMON, confidence: LOW, source: DOMAIN}
+  - {pattern_id: JKT-RES-001, section: results_discussion, type: STRUCTURAL, description: "Results and discussion interleaved variable by variable, in Methods order", evidence: "13/14", frequency: 93, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-RES-002, section: results_discussion, type: EVIDENTIAL, description: "Paragraphs open with a result or a figure/table pointer followed by the result", evidence: "57% of paragraphs; modal opening in 14/14; P(R|F)=0.73", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-DISC-001, section: results_discussion, type: ARGUMENTATIVE, description: "Core unit: RESULT → (INTERPRETATION) → LITERATURE SUPPORT within one paragraph", evidence: "R…L 14/14 articles, 45% of paragraphs", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-DISC-002, section: results_discussion, type: CITATIONAL, description: "Explanations and mechanisms are followed by a supporting citation", evidence: "P(L|E)=0.71; P(L|M)=0.68; R…E…L in 13/14", frequency: 93, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-DISC-003, section: results_discussion, type: EVIDENTIAL, description: "Values classified against a criterion, index scale or regulatory standard", evidence: "10/14", frequency: 71, tier: COMMON, confidence: LOW, source: "CORPUS; regulatory benchmarks are DOMAIN/national"}
+  - {pattern_id: JKT-DISC-004, section: results_discussion, type: CITATIONAL, description: "Paragraph closes on a literature-support sentence", evidence: "40% of paragraphs", frequency: null, tier: DESCRIPTIVE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-DISC-005, section: results_discussion, type: ARGUMENTATIVE, description: "Confirmation-oriented: contrasting literature is rarely used", evidence: "LX in 4/14 articles, 4% of paragraphs", frequency: 29, tier: RARE, confidence: LOW, source: CORPUS}
+  - {pattern_id: JKT-DISC-006, section: results_discussion, type: ARGUMENTATIVE, description: "Modal depth is explanation (L3); broader implication (L5) mainly in English articles", evidence: "L3 54%; L5 EN 16% vs ID 1%", frequency: null, tier: DESCRIPTIVE, confidence: LOW, source: LANGUAGE}
+  - {pattern_id: JKT-DISC-007, section: results_discussion, type: RHETORICAL, description: "R&D ends with a synthesis, implication or limitation block", evidence: "EN 6/7 vs ID 1/7", frequency: 50, tier: VARIABLE, confidence: LOW, source: LANGUAGE}
+  - {pattern_id: JKT-STAT-001, section: results_discussion, type: STATISTICAL, description: "Evidence is mostly descriptive or index-based; formal significance testing is rare", evidence: "p-values 2/14; descriptive/index only 9/14", frequency: 64, tier: COMMON, confidence: LOW, source: "CORPUS/DOMAIN"}
+  - {pattern_id: JKT-CONC-001, section: conclusion, type: STRUCTURAL, description: "Single paragraph with no citations", evidence: "14/14", frequency: 100, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-CONC-002, section: conclusion, type: RHETORICAL, description: "Opens with the main finding, then restates key numbers", evidence: "opening 14/14; numbers 11/14", frequency: 79, tier: COMMON, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-CONC-003, section: conclusion, type: COHERENCE, description: "Directly answers the stated objective", evidence: "DIRECT 12/14; PARTIAL 2/14", frequency: 86, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-CONC-004, section: conclusion, type: RHETORICAL, description: "Ends with an implication or recommendation", evidence: "8/14", frequency: 57, tier: VARIABLE, confidence: LOW, source: "CORPUS (absent mostly in C1)"}
+  - {pattern_id: JKT-CIT-001, section: all, type: CITATIONAL, description: "Parenthetical (non-integral) author–year citation dominates", evidence: "85% of 742 citations; 12/14 articles", frequency: 86, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-CIT-002, section: all, type: CITATIONAL, description: "Citation density gradient: Introduction > R&D ≈ Methods > Conclusion (0)", evidence: "Intro CD > R&D CD in 11/14 (exceptions d8, d10, d12); conclusion 0 in 14/14", frequency: 79, tier: COMMON, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-REF-001, section: references, type: REFERENTIAL, description: "About 20–60 references (median 37, range 14–63); English-language articles cite more (median 40 vs 26)", evidence: ">= 20 refs in 13/14", frequency: 93, tier: CORE, confidence: LOW, source: "CORPUS; LANGUAGE effect on size"}
+  - {pattern_id: JKT-REF-002, section: references, type: REFERENTIAL, description: "Most references are from the last 10 years", evidence: "median 79% <= 10 y; 13/14 >= 60% (exception d16, 23%)", frequency: 93, tier: CORE, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-LING-001, section: all, type: LINGUISTIC, description: "Impersonal voice with 'this study / penelitian ini' as agent; first person rare", evidence: "first person EN 3/7, ID 0/7", frequency: 79, tier: COMMON, confidence: MODERATE, source: CORPUS}
+  - {pattern_id: JKT-LING-002, section: results_discussion, type: LINGUISTIC, description: "Indonesian formula: result → 'sama dengan / sesuai dengan' prior study → 'Hal ini diduga karena' → 'didukung / diperkuat oleh' → 'X menambahkan'", evidence: "strongest in d10, d13; 'diduga' in 5/7 ID", frequency: 71, tier: COMMON, confidence: LOW, source: "LANGUAGE + AUTHOR-CLUSTER"}
+
+# ---------------------------------------------------------------------------------------------
+# D. ANTI-PATTERN LIBRARY (§73)
+# ---------------------------------------------------------------------------------------------
+anti_patterns:
+  - anti_pattern_id: JKT-ANTI-001
+    section: cross-section
+    description: "A number or fact in the abstract, objective or conclusion contradicts the body"
+    frequency: "4/14 (d6, d10, d13, d14)"
+    evidence: "d6 carrying capacity 184/day (abstract) vs 214 and 1043 (R&D); d10 abundance 2.3–4 vs 0.02–0.06 ind/m²; d13 spill years 2019/2021 vs 2018/2020; d14 lowest-density species differs"
+    why_problematic: "Undermines credibility; the reader cannot tell which value is correct"
+    possible_correction: "Generate abstract and conclusion values from the same results table; run a numeric cross-check"
+    confidence: HIGH (directly verified)
+  - anti_pattern_id: JKT-ANTI-002
+    section: results_discussion
+    description: "Unhedged causal attribution drawn from observational or correlational data, with no test or citation"
+    frequency: ">= 7/14"
+    evidence: "e.g. correlation read as effect (d4); regression read causally with reversed direction (d12); site differences asserted as caused (d13)"
+    why_problematic: "The design does not support causal claims"
+    possible_correction: "Use hedged relational verbs (associated with, may reflect, diduga berkaitan dengan) and cite a mechanism source"
+    confidence: MODERATE
+  - anti_pattern_id: JKT-ANTI-003
+    section: conclusion
+    description: "Result-only conclusion: restates numbers with no interpretation or implication"
+    frequency: "3/14 (d8, d10, d11; all in cluster C1)"
+    why_problematic: "The objective is not answered at the level of meaning"
+    possible_correction: "Add one interpretation sentence and one implication sentence"
+    confidence: LOW (AUTHOR-CLUSTER)
+  - anti_pattern_id: JKT-ANTI-004
+    section: any
+    description: "Drafting residue in the published text: citation placeholders, proposal future tense, untranslated captions"
+    frequency: "3/14 (d10 '(referensi)'; d2 and d6 'will be'; d2 Indonesian caption in an English article)"
+    possible_correction: "Pre-submission residue scan"
+    confidence: HIGH (directly verified)
+  - anti_pattern_id: JKT-ANTI-005
+    section: results_discussion
+    description: "Duplicated or near-verbatim restated paragraphs"
+    frequency: "1/14 (d16)"
+    possible_correction: "Similarity check within the manuscript"
+    confidence: HIGH (directly verified)
+  - anti_pattern_id: JKT-ANTI-006
+    section: results_discussion
+    description: "List-like description of each taxon or parameter without comparison or explanation (depth L1–L2)"
+    frequency: "1/14 dominant (d8); present in parts of d6"
+    possible_correction: "End each block with a comparison and an explanation"
+    confidence: LOW
+  - anti_pattern_id: JKT-ANTI-007
+    section: results_discussion
+    description: "Statistical magnitude mislabelled (R² = 0.95 called 'moderate'; a wide range called 'homogeneous')"
+    frequency: "1/14 (d12)"
+    possible_correction: "Use a stated scale for effect-size labels"
+    confidence: HIGH (directly verified)
+  - anti_pattern_id: JKT-ANTI-008
+    section: document
+    description: "Exceeds the page limit (> 10 pages)"
+    frequency: "6/14"
+    note: "Editorial non-compliance, not rhetoric; tolerated in practice"
+    confidence: HIGH
+  - anti_pattern_id: JKT-ANTI-009
+    section: introduction
+    description: "Gap stated before its subject is introduced ('these bacteria' with no antecedent) or split across distant paragraphs"
+    frequency: "1/14 (d7)"
+    confidence: LOW
+  consistently_absent_constructions:           # §49: things the corpus avoids
+    - "Citations in the abstract (0/14)"
+    - "Citations in the conclusion (0/14)"
+    - "Multi-paragraph or bulleted conclusion (0/14)"
+    - "Separate Results and Discussion sections (0/14)"
+    - "Formal hypothesis statement in the Introduction (0/14)"
+    - "Question or result-claim titles (0/14)"
+    - "First person in Indonesian-language articles (0/7)"
+
+# ---------------------------------------------------------------------------------------------
+# E. WRITING GRAMMAR (§55–56) — only components supported above; '?' = optional; '+' = one or more
+# ---------------------------------------------------------------------------------------------
+grammar:
+  TITLE: "[VARIABLE|PHENOMENON|METHOD+TARGET] + [OBJECT|TAXON(scientific name?)|ECOSYSTEM] + [LOCATION hierarchy]?  (nominal; no claim or question)"
+  ABSTRACT: "BG{1-3} → (GAP|PB)? → OBJ → MET{1-4} → RES+ (numeric) → INT? → (CON|IMP)"
+  INTRODUCTION: "P_open[IMPORTANCE|CONTEXT] → P_mid[SPECIFIC_CONTEXT | PRIOR_KNOWLEDGE | METHOD_BACKGROUND]{1-4} → P_final[PRIOR_STUDIES? → GAP(contrastive) → CONNECTIVE(Therefore) → OBJECTIVE → CONTRIBUTION?]"
+  METHODS: "LOCATION+TIME(+MAP) → SAMPLING_DESIGN → COLLECTION → MEASUREMENT → DERIVED_VARIABLES(EQUATION+LEGEND)? → ANALYSIS(software/version?)"
+  RESULTS_DISCUSSION: "BLOCK+ in Methods order; BLOCK := UNIT+ ; closing SYNTHESIS_BLOCK? (EN-preferred)"
+  DISCUSSION_UNIT:
+    DU-A_result_interpretive: "(F →) R → I → L"
+    DU-B_result_explanatory: "R → (C|B)? → E → L"
+    DU-C_literature_agreement: "R → L(agreement: consistent with / sama dengan) → E(hedged) → L(support)"
+    DU-D_definition_led: "D → L → R → B → I"
+    DU-E_mechanism: "R → I → M → L"
+    DU-F_synthesis_implication: "T → I → (G|K) → (U → A)?"
+  CONCLUSION: "C2(main finding) → C3{0-6} → C4? → (C5|C6|C7)? → C8?  — one paragraph, no citations"
+  CITATION: "non-integral (Author, Year; Author et al., Year) at clause or sentence end; 2–4 source clusters in the Introduction; one supporting source after each explanation or mechanism in R&D"
+
+paragraph_blueprints:
+  - {paragraph_type: INTRO_OPENING, opening: "IMPORTANCE or CONTEXT", development: ["significance data or statistic", "narrowing to the object"], closing: "specific object or threat", citation_behavior: "2–5 non-integral citations", typical_sentences: "4–6"}
+  - {paragraph_type: INTRO_FINAL, opening: "PRIOR_STUDIES or SITE", development: ["contrastive GAP (However / Namun)"], closing: "Therefore + OBJECTIVE (+ expected contribution)", citation_behavior: "0–3; objective sentence uncited", typical_sentences: "3–6"}
+  - {paragraph_type: RD_RESULT_INTERPRETIVE, opening: "F pointer or RESULT with values", development: ["interpretive gloss (indicating …)", "comparison with a benchmark or prior study"], closing: "supporting citation or interpretation", citation_behavior: "1–3", typical_sentences: "4–8"}
+  - {paragraph_type: RD_DEFINITION_LED, opening: "definition of parameter or method + citation", development: ["result values", "classification against a criterion"], closing: "interpretation", citation_behavior: "2–4"}
+  - {paragraph_type: RD_SYNTHESIS, opening: "Overall / Collectively", development: ["integrated interpretation", "management or methodological implication"], closing: "limitation or future research", citation_behavior: "0–2", note: "LANGUAGE: mainly EN"}
+  - {paragraph_type: CONCLUSION, opening: "This study demonstrated … / main finding", development: ["key numbers", "interpretation"], closing: "implication or recommendation", citation_behavior: "none", typical_sentences: "4–9"}
+
+# ---------------------------------------------------------------------------------------------
+# F. HANDOFF → JKT WRITING SKILL (§75)
+#   Rule: only HARD_CONSTRAINT may be enforced. Because the corpus is a single issue, CORE-tier empirical
+#   patterns are handed over as COMMON_PATTERN (prefer), not CORE_PATTERN (enforce).
+# ---------------------------------------------------------------------------------------------
+writing_skill_handoff:
+  HARD_CONSTRAINT:
+    - "Title <= 12 words; no abbreviations or formulas (guideline; corpus complies only 36%, so flag rather than silently truncate)"
+    - "Abstract <= 250 words, one paragraph; 3–5 keywords"
+    - "Sections: Introduction, Materials and Methods, Results and Discussion, Conclusion, References"
+    - "Introduction contains background, literature review, gap, objective; target 15–20% of length"
+    - "APA 7 author–year; 'et al.' for 3+ authors"
+    - "<= 10 pages including figures and tables"
+    - "Indonesian manuscripts: English title + English abstract, then Indonesian abstract"
+  CORE_PATTERN: []      # intentionally empty until validated on further issues
+  COMMON_PATTERN:       # prefer
+    - JKT-ABS-001
+    - JKT-ABS-002
+    - JKT-ABS-003
+    - JKT-ABS-004
+    - JKT-ABS-005
+    - JKT-TITLE-001
+    - JKT-TITLE-002
+    - JKT-INTRO-001
+    - JKT-INTRO-002
+    - JKT-INTRO-004
+    - JKT-INTRO-005
+    - JKT-METH-001
+    - JKT-METH-002
+    - JKT-RES-001
+    - JKT-RES-002
+    - JKT-DISC-001
+    - JKT-DISC-002
+    - JKT-CONC-001
+    - JKT-CONC-002
+    - JKT-CONC-003
+    - JKT-CIT-001
+    - JKT-REF-002
+    - JKT-LING-001
+  OPTIONAL_PATTERN:     # select in context
+    - JKT-ABS-006
+    - JKT-INTRO-003
+    - JKT-INTRO-007
+    - JKT-DISC-003
+    - JKT-CONC-004
+  DOMAIN_PATTERN:
+    - {id: JKT-METH-003, applies_to: FIELD_ECOLOGICAL_INDEX}
+    - {id: "regulatory benchmark (KepMenLH, PP 22/2021, KKP)", applies_to: "water quality / pollution / mangrove condition"}
+    - {id: "instrument calibration reporting", applies_to: ACOUSTIC}
+  LANGUAGE_PATTERN:     # select by manuscript language
+    - {id: JKT-DISC-007, EN: prefer, ID: optional}
+    - {id: JKT-LING-002, ID: optional, EN: not_applicable}
+  DO_NOT_ENFORCE:
+    - JKT-TITLE-003     # guideline conflict; do not imitate over-long titles
+    - JKT-DISC-005      # confirmation bias is descriptive, not a target
+    - JKT-STAT-001      # absence of tests is not a target; use tests where the design allows
+    - "every item in anti_patterns"
+  generation_guards:
+    - "Never invent citations; the corpus R&D relies on E → L and M → L, so any generated explanation needs a real source from the user"
+    - "Hedge causal language unless the design is experimental or a test supports it (JKT-ANTI-002)"
+    - "Take abstract and conclusion numbers from the same results source (JKT-ANTI-001)"
+
+# ---------------------------------------------------------------------------------------------
+# G. HANDOFF → JKT STYLE AUDITOR (§76) — expected ranges = corpus IQR unless stated
+# ---------------------------------------------------------------------------------------------
+auditor_handoff:
+  criteria:
+    - {id: AUD-01, criterion: title_word_count, guideline: "<= 12", corpus_IQR: [11.75, 17], action: "flag > 12 (guideline)"}
+    - {id: AUD-02, criterion: location_terminal_in_title, expected: "if location present, it comes last", corpus: "12/12"}
+    - {id: AUD-03, criterion: abstract_word_count, guideline: "<= 250", corpus_IQR: [200, 248]}
+    - {id: AUD-04, criterion: abstract_move_coverage, required: [BG, OBJ, MET, RES], expected: [CON_or_IMP], corpus: "required 14/14; CON/IMP 11/14"}
+    - {id: AUD-05, criterion: abstract_numeric_result, expected: true, corpus: "14/14"}
+    - {id: AUD-06, criterion: abstract_citations, expected: 0, corpus: "0/14"}
+    - {id: AUD-07, criterion: keywords_count, guideline: "3–5"}
+    - {id: AUD-08, criterion: objective_location, expected: "final Introduction paragraph", corpus: "14/14"}
+    - {id: AUD-09, criterion: gap_visibility, expected: "explicit, in last two paragraphs, contrastive marker", corpus: "11/14 explicit"}
+    - {id: AUD-10, criterion: intro_paragraphs, corpus_IQR: [3, 5], range: [2, 7]}
+    - {id: AUD-11, criterion: intro_share_pct, guideline: "15–20", corpus_IQR: [14.2, 19.8]}
+    - {id: AUD-12, criterion: intro_citation_density_per_sentence, corpus_IQR: [0.56, 1.07]}
+    - {id: AUD-13, criterion: methods_opens_with_location_time, expected: true, corpus: "13/14"}
+    - {id: AUD-14, criterion: methods_citation_density_per_sentence, corpus_IQR: [0.29, 0.48]}
+    - {id: AUD-15, criterion: rd_share_pct, corpus_IQR: [51.9, 60.5]}
+    - {id: AUD-16, criterion: rd_citation_density_per_sentence, corpus_IQR: [0.29, 0.48]}
+    - {id: AUD-17, criterion: result_discussion_linkage, expected: "each result block has >= 1 literature or benchmark comparison", corpus: "R…L 14/14 articles"}
+    - {id: AUD-18, criterion: discussion_interpretation_depth, expected: ">= 70% of R&D paragraphs reach L3 (explanation) or deeper", corpus: "81%"}
+    - {id: AUD-19, criterion: causal_language_control, expected: "causal verbs only with experimental design, a test, or a cited mechanism", corpus: "violations in >= 7/14"}
+    - {id: AUD-20, criterion: conclusion_form, expected: "1 paragraph, 0 citations, 4–9 sentences, ~90–190 words", corpus: "14/14 one paragraph; IQR sentences [4, 9], words [87, 186]"}
+    - {id: AUD-21, criterion: conclusion_objective_alignment, expected: DIRECT, corpus: "12/14"}
+    - {id: AUD-22, criterion: conclusion_new_information, expected: none, corpus: "0/14"}
+    - {id: AUD-23, criterion: cross_section_numeric_consistency, expected: "0 mismatches between abstract, objective, R&D and conclusion", corpus: "mismatches in 4/14", severity: HIGH}
+    - {id: AUD-24, criterion: reference_count, corpus_IQR: [24.75, 47]}
+    - {id: AUD-25, criterion: reference_recency_10y, expected: ">= 0.68", corpus_IQR: [0.68, 0.86]}
+    - {id: AUD-26, criterion: reference_recency_5y, corpus_IQR: [0.28, 0.66]}
+    - {id: AUD-27, criterion: doi_coverage, expected: ">= 0.47", corpus_IQR: [0.47, 0.90]}
+    - {id: AUD-28, criterion: page_count, guideline: "<= 10"}
+    - {id: AUD-29, criterion: drafting_residue, expected: "no placeholders ('(referensi)', 'citation needed'), no future tense in Methods, captions in manuscript language", severity: HIGH}
+    - {id: AUD-30, criterion: duplicate_paragraphs, expected: none, severity: MEDIUM}

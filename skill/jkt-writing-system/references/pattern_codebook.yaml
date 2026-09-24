@@ -1,0 +1,351 @@
+# JKT_PATTERN_CODEBOOK.yaml
+# Version: 1.0
+# Purpose: Shared coding ontology for Artefak 1 (Pattern Detection),
+#          Artefak 2 (Writing Skill), and Artefak 3 (Style Auditor).
+
+schema_version: "1.0"
+system_name: "JKT AI Writing System"
+journal_name: "Jurnal Kelautan Tropis"
+
+principles:
+  distinguish:
+    - editorial_constraint
+    - empirical_journal_pattern
+    - domain_pattern
+    - author_cluster_pattern
+    - temporal_pattern
+    - language_pattern
+  uncertainty_labels:
+    - observed
+    - inferred
+    - provisional
+    - unsupported
+  pattern_status:
+    - hard_constraint
+    - core_pattern
+    - common_pattern
+    - variable_pattern
+    - optional_pattern
+    - domain_pattern
+    - author_cluster
+    - temporal_pattern
+    - anti_pattern
+    - do_not_enforce
+
+pattern_id_prefixes:
+  title: "JKT-TITLE"
+  abstract: "JKT-ABS"
+  introduction: "JKT-INTRO"
+  methods: "JKT-METH"
+  results: "JKT-RES"
+  discussion: "JKT-DISC"
+  conclusion: "JKT-CONC"
+  citation: "JKT-CIT"
+  references: "JKT-REF"
+  language: "JKT-LING"
+  coherence: "JKT-COH"
+  anti_pattern: "JKT-ANTI"
+
+evidence_source_types:
+  - guideline
+  - corpus
+  - domain
+  - author_cluster
+  - temporal_comparison
+  - language_comparison
+
+pattern_types:
+  - structural
+  - rhetorical
+  - linguistic
+  - citational
+  - evidential
+  - procedural
+  - argumentative
+  - statistical
+  - referential
+  - coherence
+
+confidence_levels:
+  very_high:
+    label: "VERY_HIGH"
+    guidance: "Stable across years, domains, and author groups with adequate corpus support."
+  high:
+    label: "HIGH"
+    guidance: "Strongly supported with limited exceptions."
+  moderate:
+    label: "MODERATE"
+    guidance: "Useful but context dependent."
+  low:
+    label: "LOW"
+    guidance: "Do not enforce."
+  insufficient:
+    label: "INSUFFICIENT"
+    guidance: "Evidence inadequate for journal-level inference."
+
+frequency_classes:
+  core:
+    min_percent: 80
+    label: "CORE"
+  common:
+    min_percent: 60
+    max_percent: 79.999
+    label: "COMMON"
+  variable:
+    min_percent: 30
+    max_percent: 59.999
+    label: "VARIABLE"
+  rare:
+    min_percent: 0
+    max_percent: 29.999
+    label: "RARE"
+
+article_metadata_fields:
+  - article_id
+  - title
+  - year
+  - volume
+  - issue
+  - pages
+  - doi
+  - language
+  - article_type
+  - research_domain
+  - research_object
+  - study_location
+  - method_family
+  - data_type
+  - number_of_authors
+  - first_author
+  - corresponding_author
+  - institution
+  - sections_present
+
+domains:
+  MARBIO: "Marine Biology"
+  MARECO: "Marine Ecology"
+  FISH: "Marine Fisheries"
+  OCEAN: "Oceanography"
+  POLL: "Marine Pollution"
+  RS: "Remote Sensing"
+  MICRO: "Marine Microbiology"
+  COAST: "Coastal Management"
+  GEO: "Marine Geology/Geodesy"
+  OTHER: "Other marine science"
+
+units_of_analysis:
+  - document
+  - section
+  - paragraph
+  - sentence
+  - clause
+  - phrase
+  - citation
+  - data_object
+
+title_archetypes:
+  T1: "Variable + Object + Location"
+  T2: "Relationship X-Y + Object + Location"
+  T3: "Effect of X on Y"
+  T4: "Distribution/Abundance of X"
+  T5: "Biological/Ecological Characteristic of X"
+  T6: "Assessment/Evaluation of X"
+  T7: "Method/Application + Target"
+  T8: "Temporal/Spatial Dynamics of X"
+  T9: "Predictive/Modeling Title"
+  T10: "Other recurrent structure"
+
+abstract_moves:
+  AB-BG: "Background"
+  AB-PB: "Problem"
+  AB-GAP: "Research gap"
+  AB-OBJ: "Objective"
+  AB-MET: "Method"
+  AB-DAT: "Data/sample description"
+  AB-RES: "Result"
+  AB-INT: "Interpretation"
+  AB-CON: "Conclusion"
+  AB-IMP: "Implication"
+
+introduction_moves:
+  I1.1: "Ecological importance"
+  I1.2: "Economic importance"
+  I1.3: "Management importance"
+  I1.4: "Biological significance"
+  I1.5: "Environmental significance"
+  I1.6: "General scientific context"
+  I2.1: "Species context"
+  I2.2: "Ecosystem context"
+  I2.3: "Geographic context"
+  I2.4: "Environmental condition"
+  I2.5: "Fisheries context"
+  I2.6: "Specific phenomenon"
+  I3.1: "Environmental pressure"
+  I3.2: "Knowledge uncertainty"
+  I3.3: "Resource problem"
+  I3.4: "Management problem"
+  I3.5: "Methodological problem"
+  I3.6: "Monitoring problem"
+  I4.1: "Previous findings"
+  I4.2: "Previous methods"
+  I4.3: "Previous study locations"
+  I4.4: "Scientific consensus"
+  I4.5: "Conflicting findings"
+  I5: "Establishing research gap"
+  I6: "Justifying the study"
+  I7: "Stating research objective"
+
+gap_types:
+  G-KNOW: "Knowledge gap"
+  G-GEO: "Geographical gap"
+  G-TIME: "Temporal gap"
+  G-METH: "Methodological gap"
+  G-DATA: "Data gap"
+  G-TAX: "Species/taxonomic gap"
+  G-MGMT: "Management gap"
+  G-APP: "Application gap"
+  G-CON: "Contextual gap"
+
+gap_visibility:
+  - explicit
+  - implicit
+  - absent
+  - falsely_asserted
+
+method_components:
+  M1: "Study location"
+  M2: "Study period"
+  M3: "Research design"
+  M4: "Population/sample"
+  M5: "Sampling design"
+  M6: "Sample collection"
+  M7: "Equipment/material"
+  M8: "Field measurement"
+  M9: "Laboratory analysis"
+  M10: "Derived variable/calculation"
+  M11: "Statistical analysis"
+  M12: "Spatial analysis"
+  M13: "Modeling"
+  M14: "Software"
+  M15: "Quality assurance/control"
+  M16: "Ethical/permit information"
+
+results_discussion_units:
+  R: "Empirical result"
+  Q: "Quantitative evidence"
+  F: "Figure/table reference"
+  C: "Comparison"
+  L: "Literature comparison"
+  E: "Explanation"
+  M: "Mechanism"
+  I: "Interpretation"
+  U: "Uncertainty"
+  S: "Statistical inference"
+  A: "Application"
+  G: "Management implication"
+  K: "Knowledge implication"
+  T: "Transition/synthesis"
+
+discussion_depth:
+  0: "Repetition of result"
+  1: "Description"
+  2: "Comparison"
+  3: "Explanation"
+  4: "Mechanism"
+  5: "Broader interpretation/implication"
+
+conclusion_moves:
+  C1: "Objective answer"
+  C2: "Main finding"
+  C3: "Quantitative finding"
+  C4: "Interpretation"
+  C5: "Scientific implication"
+  C6: "Management implication"
+  C7: "Recommendation"
+  C8: "Future research"
+  C9: "Limitation"
+
+citation_functions:
+  CIT-BG: "Background"
+  CIT-DEF: "Definition"
+  CIT-MET: "Method"
+  CIT-SUP: "Supporting evidence"
+  CIT-CON: "Contrasting evidence"
+  CIT-MEC: "Mechanism"
+  CIT-BEN: "Benchmark"
+  CIT-DAT: "Data source"
+  CIT-TAX: "Taxonomy"
+  CIT-MGT: "Management/policy"
+
+citation_positions:
+  - initial
+  - medial
+  - final
+  - integral
+  - non_integral
+  - cluster
+
+sentence_functions:
+  SF01: "Context"
+  SF02: "Importance"
+  SF03: "Definition"
+  SF04: "Problem"
+  SF05: "Prior research"
+  SF06: "Gap"
+  SF07: "Justification"
+  SF08: "Objective"
+  SF09: "Method"
+  SF10: "Result"
+  SF11: "Quantitative result"
+  SF12: "Comparison"
+  SF13: "Literature agreement"
+  SF14: "Literature disagreement"
+  SF15: "Explanation"
+  SF16: "Mechanism"
+  SF17: "Interpretation"
+  SF18: "Limitation"
+  SF19: "Implication"
+  SF20: "Recommendation"
+  SF21: "Transition"
+  SF22: "Synthesis"
+
+claim_types:
+  C1: "User-provided fact"
+  C2: "Data-derived result"
+  C3: "Literature-supported fact"
+  C4: "Methodological description"
+  C5: "Interpretation"
+  C6: "Causal explanation"
+  C7: "Management implication"
+  C8: "Recommendation"
+
+evidence_types:
+  - user_data
+  - raw_data
+  - processed_data
+  - statistical_output
+  - table
+  - figure
+  - verified_reference
+  - verified_method
+  - guideline
+
+pattern_record_template:
+  pattern_id: null
+  section: null
+  description: null
+  pattern_type: null
+  source: null
+  frequency_percent: null
+  evidence_count: null
+  eligible_count: null
+  domains: []
+  years: []
+  author_independence: null
+  language_scope: null
+  guideline_support: null
+  exceptions: []
+  confidence: null
+  frequency_class: null
+  status: null
+  notes: null

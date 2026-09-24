@@ -1,0 +1,446 @@
+# JKT_AUDIT_RULES.yaml
+# Version: 1.0
+# Purpose: Operational rules for Artefak 3 (JKT Style Auditor).
+# Consumes JKT_PATTERN_CODEBOOK.yaml and JKT_STYLE_PROFILE.yaml.
+
+schema_version: "1.0"
+
+audit_priority:
+  - scientific_validity
+  - evidence_integrity
+  - research_logic
+  - editorial_requirements
+  - rhetorical_coherence
+  - jkt_pattern_conformity
+  - language_polish
+
+finding_severity:
+  critical:
+    label: "CRITICAL"
+    definition: "Materially compromises scientific validity or interpretation."
+    examples:
+      - fabricated_or_untraceable_major_reference
+      - conclusion_unsupported_by_results
+      - major_statistical_misinterpretation
+      - major_objective_not_analyzed
+      - unsupported_causal_claim_central_to_conclusion
+  major:
+    label: "MAJOR"
+    definition: "Substantive weakness affecting scientific argument or journal suitability."
+    examples:
+      - unclear_or_unsupported_gap
+      - non_reproducible_core_method
+      - discussion_repeats_results_without_interpretation
+      - missing_key_literature_comparison
+  moderate:
+    label: "MODERATE"
+    definition: "Meaningful but localized weakness."
+    examples:
+      - weak_paragraph_architecture
+      - ambiguous_citation_placement
+      - redundancy
+      - title_overloaded
+  minor:
+    label: "MINOR"
+    definition: "Technical or language issue with low scientific impact."
+
+finding_status:
+  - open
+  - revised
+  - resolved
+  - partially_resolved
+  - not_applicable
+  - disputed
+
+finding_record:
+  required_fields:
+    - finding_id
+    - section
+    - location
+    - severity
+    - audit_layer
+    - problem
+    - evidence
+    - expected_standard
+    - why_it_matters
+    - recommended_revision
+    - confidence
+    - status
+
+audit_layers:
+  scientific_integrity:
+    checks:
+      - factual_consistency
+      - methodological_validity
+      - statistical_language
+      - evidence_strength
+      - unsupported_claims
+      - causality
+      - data_interpretation
+  rhetorical_quality:
+    checks:
+      - argument_flow
+      - paragraph_purpose
+      - move_sequence
+      - literature_synthesis
+      - evidence_interpretation_relationship
+      - conclusion_logic
+  jkt_conformity:
+    checks:
+      - editorial_rules
+      - validated_jkt_patterns
+      - section_architecture
+      - citation_behavior
+      - title_abstract_conventions
+      - results_discussion_pattern
+
+document_audit:
+  required_sections_source: "CURRENT_GUIDELINE"
+  inspect:
+    - missing_sections
+    - heading_order
+    - redundant_sections
+    - subheading_hierarchy
+    - section_imbalance
+    - duplicated_content
+
+section_audit:
+  title:
+    checks:
+      - word_count
+      - clarity
+      - scientific_specificity
+      - object_present
+      - variable_present
+      - location_relevance
+      - method_relevance
+      - unsupported_claim
+      - abbreviation_use
+      - objective_alignment
+      - result_alignment
+      - jkt_archetype_match
+    critical_triggers:
+      - causal_title_for_noncausal_design
+      - title_claim_not_supported_by_results
+
+  abstract:
+    moves_to_tag:
+      - AB-BG
+      - AB-PB
+      - AB-GAP
+      - AB-OBJ
+      - AB-MET
+      - AB-DAT
+      - AB-RES
+      - AB-INT
+      - AB-CON
+      - AB-IMP
+    mandatory_checks:
+      - objective_present
+      - method_present
+      - main_result_present
+      - conclusion_present
+      - numeric_consistency
+      - study_location_consistency
+      - study_period_consistency
+      - species_consistency
+      - sample_size_consistency
+    critical_triggers:
+      - abstract_result_mismatch_with_main_results
+      - abstract_statistical_claim_mismatch
+
+  introduction:
+    moves_to_tag:
+      - I1
+      - I2
+      - I3
+      - I4
+      - I5
+      - I6
+      - I7
+    checks:
+      - funnel_logic
+      - gap_visibility
+      - gap_type
+      - gap_evidence
+      - literature_synthesis
+      - objective_alignment
+      - objective_testability
+    flag_patterns:
+      - unsupported_no_previous_study_claim
+      - author_by_author_review
+      - citation_dump
+      - abrupt_global_to_objective_jump
+
+  methods:
+    checks:
+      - study_area
+      - study_period
+      - research_design
+      - sampling
+      - sample_size
+      - equipment
+      - measurements
+      - laboratory_procedures
+      - calculations
+      - statistics
+      - software
+      - qa_qc_if_relevant
+    reproducibility_scale:
+      high: 3
+      adequate: 2
+      low: 1
+      not_reproducible: 0
+    critical_triggers:
+      - result_without_described_method
+      - central_objective_without_method
+      - impossible_or_incompatible_method_description
+
+  results:
+    checks:
+      - objective_coverage
+      - numeric_consistency
+      - sample_size_consistency
+      - table_text_consistency
+      - figure_text_consistency
+      - statistical_wording
+      - overinterpretation
+    result_status:
+      - fully_answered
+      - partially_answered
+      - not_answered
+
+  discussion:
+    units_to_tag:
+      - R
+      - Q
+      - F
+      - C
+      - L
+      - E
+      - M
+      - I
+      - U
+      - S
+      - G
+      - K
+      - T
+    checks:
+      - discourse_sequence
+      - discussion_depth
+      - result_repetition
+      - literature_comparison
+      - mechanism_support
+      - hedging_alignment
+      - causality
+      - interpretation_evidence_alignment
+      - management_implication_support
+    mechanism_support_levels:
+      - directly_tested
+      - supported_by_data
+      - supported_by_literature
+      - plausible_untested
+      - unsupported
+
+  conclusion:
+    moves_to_tag:
+      - C1
+      - C2
+      - C3
+      - C4
+      - C5
+      - C6
+      - C7
+      - C8
+      - C9
+    checks:
+      - objective_answer
+      - result_support
+      - scope_of_inference
+      - new_data
+      - new_reference
+      - new_variable
+      - unsupported_generalization
+      - overclaim
+      - recommendation_support
+
+citation_audit:
+  functions:
+    - CIT-BG
+    - CIT-DEF
+    - CIT-MET
+    - CIT-SUP
+    - CIT-CON
+    - CIT-MEC
+    - CIT-BEN
+    - CIT-DAT
+    - CIT-TAX
+    - CIT-MGT
+  checks:
+    - in_text_to_reference_match
+    - reference_to_in_text_match
+    - metadata_consistency
+    - source_verifiability
+    - proposition_support
+    - citation_position
+    - cluster_relevance
+  support_status:
+    - supported
+    - partially_supported
+    - not_supported
+    - not_verifiable
+  phantom_types:
+    type_a: "In-text citation missing from reference list"
+    type_b: "Reference-list item never cited"
+    type_c: "Citation metadata incompatible with reference"
+    type_d: "Reference cannot be verified"
+
+cross_section_audit:
+  required_chain:
+    - title
+    - gap
+    - objective
+    - method
+    - result
+    - discussion
+    - conclusion
+  objective_contract:
+    pattern: "O_i -> M_i -> R_i -> D_i -> C_i"
+    status:
+      - complete
+      - partial
+      - broken
+  variable_traceability:
+    checks:
+      - introduced
+      - measured
+      - reported
+      - interpreted
+      - concluded
+  contradictions:
+    pairs:
+      - abstract_vs_results
+      - methods_vs_results
+      - table_vs_text
+      - figure_vs_text
+      - objective_vs_conclusion
+      - introduction_vs_methods
+
+numeric_audit:
+  checks:
+    - means
+    - standard_deviation
+    - standard_error
+    - ranges
+    - percentages
+    - sample_sizes
+    - p_values
+    - confidence_intervals
+    - coordinates
+    - dates
+  percentage_rule:
+    exhaustive_categories_expected_total: 100
+    rounding_tolerance_percent: 1.0
+  p_value_rule:
+    prohibit:
+      - impossible_p_value
+      - significance_claim_inconsistent_with_p
+      - p_value_without_named_test_if_context_requires
+
+language_audit:
+  checks:
+    - precision
+    - neutrality
+    - scientific_register
+    - conciseness
+    - logical_connectivity
+    - terminology_consistency
+    - excessive_hedging
+    - excessive_boosting
+    - generic_language
+    - promotional_language
+    - redundancy
+
+pattern_conformity:
+  classes:
+    - match
+    - acceptable_variant
+    - partial_match
+    - deviation
+    - not_applicable
+  enforcement:
+    hard_constraint: "ENFORCE"
+    core_pattern: "HIGH_WEIGHT"
+    common_pattern: "MODERATE_WEIGHT"
+    variable_pattern: "LOW_WEIGHT"
+    optional_pattern: "NO_PENALTY"
+    rare_pattern: "NO_PENALTY"
+    anti_pattern: "FLAG_IF_PRESENT"
+
+overall_diagnostic_classes:
+  substantive_revision_required:
+    definition: "Scientific or logical architecture materially deficient."
+  major_revision_required:
+    definition: "Core study may be valid but argument requires substantial restructuring."
+  targeted_revision_required:
+    definition: "Scientific architecture sound but specific substantive deviations remain."
+  minor_technical_revision:
+    definition: "Only limited language, formatting, or consistency issues remain."
+  audit_ready:
+    definition: "No unresolved critical or major issue detected within available evidence."
+
+critical_gate:
+  rule: "If any CRITICAL issue remains open, status cannot be AUDIT_READY."
+
+revision_priority:
+  - scientific_integrity
+  - research_logic
+  - evidence
+  - structure
+  - discussion_depth
+  - citation
+  - style
+  - formatting
+
+revision_scope:
+  principle: "Revise the smallest necessary unit."
+  units:
+    - word
+    - sentence
+    - paragraph
+    - subsection
+    - section
+
+re_audit:
+  compare_status:
+    - resolved
+    - partially_resolved
+    - unresolved
+    - new_issue_introduced
+  regression_checks:
+    - numeric_values_changed
+    - new_unsupported_claim
+    - citation_mismatch
+    - lost_method_detail
+    - objective_inconsistency
+
+output_requirements:
+  executive_diagnosis:
+    fields:
+      - manuscript_status
+      - highest_severity
+      - critical_issue_count
+      - major_issue_count
+      - primary_structural_weakness
+      - primary_scientific_weakness
+      - primary_jkt_conformity_weakness
+  mandatory_matrices:
+    - scientific_logic_matrix
+    - jkt_conformity_matrix
+    - revision_tracking_table
+  optional_matrices:
+    - citation_function_matrix
+    - results_discussion_map
+    - paragraph_function_map
+  no_single_score_rule: true
+  publication_probability_prediction: false
