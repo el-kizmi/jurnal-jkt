@@ -1,5 +1,9 @@
 # JKT Writing System
 
+> **Penerus tersedia (2026-09-27).** Skill ini kini digantikan oleh **Journal Writing System (JWS)**, satu skill generik untuk jurnal apa pun. JKT menjadi paket `jkt` di dalamnya, dengan korpus yang lebih besar: 34 artikel dari tiga terbitan (28(2) 2025, 29(1) 2026, 29(2) 2026), diukur skrip dan diuji holdout (status PROVISIONAL). Repositori ini tetap tersedia sebagai versi berdiri sendiri berbasis satu terbitan (Vol. 29 No. 2).
+>
+> **Perbaikan terakhir:** indentasi YAML `consistently_absent_constructions` di `skill/jkt-writing-system/references/pattern_database.yaml` diperbaiki sehingga berkas kembali terbaca oleh parser YAML; ZIP di `skill/dist/` dibangun ulang.
+
 **Skill AI untuk menulis, mengaudit, dan menganalisis pola naskah [Jurnal Kelautan Tropis (JKT)](https://ejournal2.undip.ac.id/index.php/jkt/index).**
 
 Skill ini bekerja di **Claude (claude.ai)**, **ChatGPT**, **Google Gemini**, **Claude Code**, **Codex**, dan **Gemini CLI** — satu paket ZIP yang sama bisa diunggah ke semua platform tersebut.
