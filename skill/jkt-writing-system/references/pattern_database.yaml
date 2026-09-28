@@ -345,14 +345,14 @@ anti_patterns:
     description: "Gap stated before its subject is introduced ('these bacteria' with no antecedent) or split across distant paragraphs"
     frequency: "1/14 (d7)"
     confidence: LOW
-  consistently_absent_constructions:           # §49: things the corpus avoids
-    - "Citations in the abstract (0/14)"
-    - "Citations in the conclusion (0/14)"
-    - "Multi-paragraph or bulleted conclusion (0/14)"
-    - "Separate Results and Discussion sections (0/14)"
-    - "Formal hypothesis statement in the Introduction (0/14)"
-    - "Question or result-claim titles (0/14)"
-    - "First person in Indonesian-language articles (0/7)"
+consistently_absent_constructions:           # §49: things the corpus avoids
+  - "Citations in the abstract (0/14)"
+  - "Citations in the conclusion (0/14)"
+  - "Multi-paragraph or bulleted conclusion (0/14)"
+  - "Separate Results and Discussion sections (0/14)"
+  - "Formal hypothesis statement in the Introduction (0/14)"
+  - "Question or result-claim titles (0/14)"
+  - "First person in Indonesian-language articles (0/7)"
 
 # ---------------------------------------------------------------------------------------------
 # E. WRITING GRAMMAR (§55–56) — only components supported above; '?' = optional; '+' = one or more
